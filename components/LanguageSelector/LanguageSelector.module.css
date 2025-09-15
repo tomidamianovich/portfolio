@@ -1,0 +1,7 @@
+.languageSelector {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-3xl);
+  display: flex;
+  gap: var(--space-sm);
+}

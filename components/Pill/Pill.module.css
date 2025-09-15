@@ -1,0 +1,45 @@
+.pill {
+  background-color: var(--color-gray-300);
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.pill:hover {
+  background-color: var(--color-gray-400);
+  cursor: pointer;
+}
+
+span .pill {
+  background-color: var(--color-gray-300);
+  cursor: default;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-gray-300);
+}
+
+.outlined {
+  border: 1px solid var(--color-gray-300);
+  background: transparent;
+}
+
+.outlined:hover {
+  background: var(--color-gray-300);
+}
+
+/* Sizes */
+.small {
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.medium {
+  font-size: 14px;
+  padding: 4px 12px;
+}
+
+.large {
+  font-size: 16px;
+  padding: 6px 16px;
+}

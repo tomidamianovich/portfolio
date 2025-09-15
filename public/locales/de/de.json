@@ -1,0 +1,104 @@
+{
+  "literals": {
+    "present": "Gegenwärtig",
+    "years": "Jahr",
+    "year": "Jahre",
+    "months": "Monate",
+    "month": "Monat",
+    "and": "und"
+  },
+  "seo": {
+    "title": "Portfolio von Tomás Damianovich - Senior Frontend Engineer",
+    "description": "Portfolio von Tomás Damianovich, Senior Frontend Software Engineer, spezialisiert auf React, TypeScript und Webentwicklung."
+  },
+  "name": "Tomás Damianovich Reddy",
+  "position": "Senior Frontend Software Engineer",
+  "nationality": "Argentinienisch - Spanisch",
+  "about": {
+    "title": "Über mich",
+    "content": "Systemingenieur (UTN), Argentinier. Lebe derzeit in Madrid, Spanien (GMT+2). Ich arbeite als Senior Software Engineer mit React und entwickle sowie erweitere eine Plattform für den Verkauf von Reisen, Hotels und Paketen für eine große spanische Gruppe. In meiner täglichen Arbeit nutze ich Technologien wie React, TypeScript, SASS, JEST, React Testing Library, Oracle CMS, Bitbucket, GIT, Lerna, Yarn und weitere."
+  },
+  "contact": [
+    {
+      "label": "Gmail",
+      "url": "mailto:tomasdamianovich@gmail.com"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/tomasdr/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/tomidamianovich/"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/tomidamianovich/"
+    }
+  ],
+  "experience": {
+    "title": "Berufserfahrung",
+    "content": [
+      {
+        "date": "2022-06-01",
+        "enddate": null,
+        "title": "Senior Developer (React)",
+        "description": "Teil eines Frontend-Teams als Berater auf einer Reiseplattform für eine große spanische Gruppe, hauptsächlich mit React, TypeScript, Jest, React Testing Library, Styled Components, Storybook und Node für SSR. Teilnahme an der Erstellung von Middlewares mit Node. Nutzung von Bibliotheken wie React Query und Tools wie Vite und Webpack. Arbeit nach SCRUM-Methodik und Aufgabenmanagement mit JIRA.",
+        "company": "Capitole Consulting",
+        "location": "Madrid, Spanien"
+      },
+      {
+        "date": "2021-05-01",
+        "enddate": "2022-06-30",
+        "title": "Senior Developer - Technischer Leiter (React)",
+        "description": "Teil eines Frontend-Teams bei der wichtigsten E-Commerce-Plattform in Lateinamerika, angefangen als Senior Developer und später als Acting Tech-Lead, Mentoring von Teammitgliedern, Durchführung von technischen Interviews und Beratung nicht-technischer Bereiche bei der Planung. Stack: React, TypeScript, Jest, React Testing Library, SASS, Storybook, Next-ähnliche Tools und Material UI. Arbeit nach SCRUM-Methodik und Aufgabenmanagement mit JIRA.",
+        "company": "MercadoLibre",
+        "location": "Buenos Aires, Argentinien"
+      },
+      {
+        "date": "2020-01-01",
+        "enddate": "2021-05-31",
+        "title": "Semi-Senior Developer (React)",
+        "description": "Teil eines Frontend-Teams auf einer Plattform, die Influencer und Marken verbindet. Entwicklung mit React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap und Backend-Konsum in Django (Python). Remote-Arbeit zwischen Argentinien und den USA, Nutzung von geschriebenem und gesprochenem Englisch.",
+        "company": "Cohley",
+        "location": "New York, USA (Remote)"
+      },
+      {
+        "date": "2019-07-01",
+        "enddate": "2020-01-31",
+        "title": "Semi-Senior Developer (React)",
+        "description": "Teil der Entwicklung einer Kundenmanagement- und technischen Supportplattform für einen großen mexikanischen Telekommunikationskonzern. Verwendung von React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API und Backend-Konsum mit Microservices. Arbeit nach SCRUM-Methodik und Aufgabenmanagement mit JIRA.",
+        "company": "GlobalLogic",
+        "location": "La Plata, Argentinien"
+      },
+      {
+        "date": "2018-07-01",
+        "enddate": "2019-07-31",
+        "title": "Junior Developer (Vue)",
+        "description": "Mitglied des Frontend-Teams, verantwortlich für das institutionelle Portal des Unternehmens, Verwendung von Vue JS, Jest, React Testing Library, Material UI und Redux. Arbeit nach Agile (SCRUM) Methodik mit einem verteilten Team zwischen Argentinien und den USA, Nutzung von geschriebenem und gesprochenem Englisch für die tägliche Kommunikation. Aufgabenmanagement mit JIRA.",
+        "company": "Accenture",
+        "location": "La Plata, Argentinien"
+      },
+      {
+        "date": "2016-06-01",
+        "enddate": "2018-07-31",
+        "title": "Junior Developer (Web UI)",
+        "description": "Begann mit einem 6-monatigen Praktikum und erhielt später eine Festanstellung in den Systemen der Straßenbehörde für die Verwaltung von Führerscheinen. Frontend-Entwicklung mit jQuery, CSS, Ajax und MySQL, Backend mit PHP (Symfony) einschließlich datenbankverwaltung für Abfragen und Updates.",
+        "company": "Regierung der Provinz Buenos Aires",
+        "location": "La Plata, Argentinien"
+      }
+    ]
+  },
+  "education": {
+    "title": "Bildung",
+    "content": [
+      {
+        "date": "2013-03-01",
+        "enddate": "2019-12-31",
+        "title": "Ingenieurwesen in Informationssystemen",
+        "company": "Universidad Tecnologica Nacional",
+        "location": "La Plata, Argentinien"
+      }
+    ]
+  }
+}
