@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Pill from "./Pill";
-import { PillSize, PillVariant } from "./Pill.types";
+import { PillSizeEnum, PillVariantEnum } from "./Pill.types";
 
 const meta: Meta<typeof Pill> = {
   title: "Components/Pill",
@@ -8,10 +8,10 @@ const meta: Meta<typeof Pill> = {
   argTypes: {
     text: { control: "text" },
     variant: {
-      options: Object.values(PillVariant),
+      options: Object.values(PillVariantEnum),
     },
     size: {
-      options: Object.values(PillSize),
+      options: Object.values(PillSizeEnum),
     },
   },
 };
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof Pill>;
 export const Default: Story = {
   args: {
     text: "Pill",
-    variant: PillVariant.PRIMARY,
-    size: PillSize.MEDIUM,
+    variant: PillVariantEnum.PRIMARY,
+    size: PillSizeEnum.MEDIUM,
   },
 };

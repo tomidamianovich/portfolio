@@ -9,6 +9,7 @@ const Button: React.FC<ButtonType> = ({
   active = false,
   variant = ButtonVariant.PRIMARY,
   size = ButtonSize.MEDIUM,
+  children,
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -35,8 +36,11 @@ const Button: React.FC<ButtonType> = ({
       type="button"
       onClick={handleClick}
       aria-selected={active}
+      aria-pressed={active}
+      aria-disabled={disabled}
       disabled={disabled}
     >
+      {children}
       {text}
     </button>
   );

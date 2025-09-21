@@ -1,103 +1,221 @@
 {
   "literals": {
     "present": "Present",
-    "years": "year",
-    "year": "years",
+    "years": "years",
+    "year": "year",
     "months": "months",
     "month": "month",
-    "and": "and"
+    "and": "and",
+    "of": "of",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "languageSelectorAriaLabel": "Language selector"
   },
   "seo": {
-    "title": "Tomás Damianovich Portfolio - Senior Frontend Engineer",
+    "title": "Portfolio of Tomás Damianovich - Senior Frontend Engineer",
     "description": "Portfolio of Tomás Damianovich, Senior Frontend Software Engineer specialized in React, TypeScript, and web development."
   },
   "name": "Tomás Damianovich Reddy",
-  "nationality": "Argentinian - Spanish",
   "position": "Senior Frontend Software Engineer",
+  "titleDetail": "Madrid, Spain (GMT+2)",
+  "nationality": "Argentinian - Spanish",
+  "phone": "(+34) - 667 094 477",
+  "email": "tomasdamianovich@gmail.com",
+  "goToTop": {
+    "title": "Back to top",
+    "ariaLabel": "Button to scroll back to the top of the page"
+  },
   "about": {
-    "title": "About Me",
-    "content": "Systems Engineer (UTN), Argentinian. Currently living in Madrid, Spain (GMT+2). I work as a Senior Software Engineer with React, developing and evolving a travel, hotels, and packages sales platform for a major Spanish group. In my daily work, I use technologies such as React, TypeScript, SASS, JEST, React Testing Library, Oracle CMS, Bitbucket, GIT, Lerna, Yarn, among others."
+    "title": "About me",
+    "content": "I’m passionate about building efficient, accessible, and scalable web experiences using React and TypeScript. I currently develop travel, hotel, and package booking platforms with Vite and SSR, focusing on SEO and accessibility, including screen readers. I have also worked on creating Node middlewares and robust testing with Jest and React Testing Library. My day-to-day includes supporting and mentoring more junior teammates, always striving for clean, maintainable, and user-centered solutions."
   },
   "contact": [
     {
-      "label": "Gmail",
-      "url": "mailto:tomasdamianovich@gmail.com"
-    },
-    {
+      "icon": "linkedin",
       "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/tomasdr/"
     },
     {
+      "icon": "github",
       "label": "GitHub",
       "url": "https://github.com/tomidamianovich/"
     },
     {
+      "icon": "instagram",
       "label": "Instagram",
       "url": "https://www.instagram.com/tomidamianovich/"
     }
   ],
   "experience": {
     "title": "Experience",
-    "content": [
+    "items": [
       {
-        "date": "2022-06-01",
-        "enddate": null,
-        "title": "Senior Developer (React)",
-        "description": "Part of a Frontend team as a consultant in a Travel platform for a major Spanish group, developing mainly with React, TypeScript, Jest, React Testing Library, Styled Components, Storybook, and Node for SSR. I also participated in the creation of middlewares with Node. I use libraries like React Query and tools such as Vite and Webpack. Work under SCRUM methodology and task management with JIRA.",
-        "company": "Capitole Consulting",
-        "location": "Madrid, Spain"
+        "date": "2022-06",
+        "endDate": null,
+        "subtitle": "Senior Developer (React)",
+        "content": "I am part of a Frontend team as a consultant on a Travel platform for a major Spanish group, mainly developing with React, TypeScript, Jest, React Testing Library, Styled Components, Storybook, and Node for SSR. I also participated in creating Node middlewares. I use libraries like React Query and tools like Vite and Webpack. I work under SCRUM methodology and manage tasks with JIRA.",
+        "title": "Capitole Consulting",
+        "titleDetail": "Madrid, Spain",
+        "mode": "Hybrid"
       },
       {
-        "date": "2021-05-01",
-        "enddate": "2022-06-30",
-        "title": "Senior Developer - Technical Lead (React)",
-        "description": "I was part of a Frontend team at the most important Ecommerce platform in Latin America, starting as a Senior Developer and later as Acting Tech-Lead, mentoring teammates, conducting technical interviews, and advising non-technical areas in planning. Stack included React, TypeScript, Jest, React Testing Library, SASS, Storybook, tools similar to Next, and Material UI. Worked under SCRUM methodology and task management with JIRA.",
-        "company": "MercadoLibre",
-        "location": "Buenos Aires, Argentina"
+        "date": "2021-05",
+        "endDate": "2022-06",
+        "subtitle": "Senior Developer - Technical Lead (React)",
+        "content": "I was part of a Frontend team in the largest eCommerce platform in Latin America, starting as Senior Developer and later as Acting Tech-Lead, performing peer follow-ups, technical interviews, and advising on planning to non-technical verticals. We used React, TypeScript, Jest, React Testing Library, SASS, Storybook, Next-like tools, and Material UI. SCRUM methodology and task management with JIRA.",
+        "title": "MercadoLibre",
+        "titleDetail": "Buenos Aires, Argentina",
+        "mode": "Hybrid"
       },
       {
-        "date": "2020-01-01",
-        "enddate": "2021-05-31",
-        "title": "Semi-Senior Developer (React)",
-        "description": "I was part of a Frontend team in a platform that connects influencers and brands. Development with React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap, and backend consumption in Django (Python). Remote work between Argentina and the United States, using both written and spoken English.",
-        "company": "Cohley",
-        "location": "New York, USA (Remote)"
+        "date": "2020-01",
+        "endDate": "2021-05",
+        "subtitle": "Semi-Senior Developer (React)",
+        "content": "I was part of a Frontend team on a platform connecting influencers and brands. Development with React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap, and backend consumption with Django (Python). Remote work between Argentina and the USA, using written and spoken English.",
+        "title": "Cohley",
+        "titleDetail": "New York, USA",
+        "mode": "Remote"
       },
       {
-        "date": "2019-07-01",
-        "enddate": "2020-01-31",
-        "title": "Semi-Senior Developer (React)",
-        "description": "Participated in the development of a customer management and technical support platform for a major Mexican Telecom Group. Used React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API, and backend consumption with Microservices. Worked under SCRUM methodology and task management with JIRA.",
-        "company": "GlobalLogic",
-        "location": "La Plata, Argentina"
+        "date": "2019-07",
+        "endDate": "2020-01",
+        "subtitle": "Semi-Senior Developer (React)",
+        "content": "I participated in the development of a client management and support platform for a major Mexican Telecom Group. Using React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API, and backend consumption with microservices. SCRUM methodology and task management with JIRA.",
+        "title": "GlobalLogic",
+        "titleDetail": "La Plata, Argentina",
+        "mode": "Hybrid"
       },
       {
-        "date": "2018-07-01",
-        "enddate": "2019-07-31",
-        "title": "Junior Developer (Vue)",
-        "description": "Member of the Frontend team responsible for the company’s Institutional Portal, using Vue JS, Jest, React Testing Library, Material UI, and Redux. Worked under Agile (SCRUM) methodology with a distributed team between Argentina and the United States, using written and spoken English for daily communication. Task management with JIRA.",
-        "company": "Accenture",
-        "location": "La Plata, Argentina"
+        "date": "2018-07",
+        "endDate": "2019-07",
+        "subtitle": "Junior Developer (Vue)",
+        "content": "I was part of the Frontend team responsible for the company's Institutional Portal, using Vue JS, Jest, React Testing Library, Material UI, and Redux. Agile methodology (SCRUM) with a distributed team between Argentina and the USA, using written and spoken English for daily communication. Task management with JIRA.",
+        "title": "Accenture",
+        "titleDetail": "La Plata, Argentina",
+        "mode": "Hybrid"
       },
       {
-        "date": "2016-06-01",
-        "enddate": "2018-07-31",
-        "title": "Junior Developer (Web UI)",
-        "description": "Started with a 6-month internship and later obtained a permanent position in the Road Authority’s systems for driver’s license management. Frontend development with jQuery, CSS, Ajax, and MySQL, and Backend with PHP (Symfony), including database administration for queries and updates.",
-        "company": "Government of Buenos Aires Province",
-        "location": "La Plata, Argentina"
+        "date": "2016-06",
+        "endDate": "2018-07",
+        "subtitle": "Junior Developer (Web UI)",
+        "content": "I started with a 6-month internship and later obtained a position in the Systems department of Vialidad for driver license management. Frontend development with jQuery, CSS, Ajax, and MySQL, and backend with PHP (Symfony), including database administration for queries and updates.",
+        "title": "Provincial Government of Buenos Aires",
+        "titleDetail": "La Plata, Argentina",
+        "mode": "On-site"
       }
     ]
   },
   "education": {
     "title": "Education",
-    "content": [
+    "items": [
       {
-        "date": "2013-03-01",
-        "enddate": "2019-12-31",
-        "title": "Ingenieria en Sistemas de Información",
-        "company": "Universidad Tecnologica Nacional",
-        "location": "La Plata, Argentina"
+        "date": "2013-02",
+        "endDate": "2019-02",
+        "subtitle": "Bachelor in Information Systems Engineering",
+        "title": "National Technological University",
+        "titleDetail": "La Plata, Argentina"
+      }
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": [
+      {
+        "title": "Spanish",
+        "titleDetail": "Native"
+      },
+      {
+        "title": "English",
+        "titleDetail": "Advanced (C1)"
+      },
+      {
+        "title": "German",
+        "titleDetail": "Beginner (A1)"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "items": [
+      {
+        "title": "Quirón Prevención",
+        "titleDetail": "Risk prevention for analysis, programming, and IT positions",
+        "date": "2023-06"
+      },
+      {
+        "title": "Udemy",
+        "titleDetail": "Angular - The Complete Guide (2022 Edition)",
+        "date": "2022-06"
+      },
+      {
+        "title": "Udemy",
+        "titleDetail": "Complete jQuery Course Modern 2022 for Beginners to Advanced",
+        "date": "2022-06"
+      },
+      {
+        "title": "Udemy",
+        "titleDetail": "Intercultural Communication",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Culture | How to Make Team Decisions",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "EF SET English Certificate 78/100 (C2 Proficient)",
+        "title": "EF SET",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Effective Delegation for New Managers",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "GIT: Advanced Commands",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Growth Hacking with Digital Marketing",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Leadership: How to Influence, Inspire and Impact as a Leader",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Testing React apps with React Testing Library (RTL)",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Time Management Mastery: Do More, Stress Less",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Node: From Zero to Expert",
+        "title": "Udemy",
+        "date": "2022-04"
+      },
+      {
+        "titleDetail": "Understanding TypeScript",
+        "title": "Udemy",
+        "date": "2022-02"
+      },
+      {
+        "titleDetail": "Diversity, Equity, and Inclusion: A Beginner’s Guide",
+        "title": "Udemy",
+        "date": "2022-06"
+      },
+      {
+        "titleDetail": "Webpack 5: The Complete Guide For Beginners",
+        "title": "Udemy",
+        "date": "2022-06"
       }
     ]
   }

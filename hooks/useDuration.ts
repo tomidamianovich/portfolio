@@ -18,17 +18,15 @@ export function useDuration(literals: LiteralsType) {
     }
 
     const yearsText =
-      years > 0
-        ? `${years} ${years > 1 ? literals?.years : literals?.year}`
-        : "";
+      years > 0 ? `${years} ${years > 1 ? literals.years : literals.year}` : "";
     const monthsText =
       months > 0
-        ? `${months} ${months > 1 ? literals?.months : literals?.month}`
+        ? `${months} ${months > 1 ? literals.months : literals.month}`
         : "";
 
     return (
       [yearsText, monthsText].filter(Boolean).join(" y ") ||
-      `0 ${literals?.month}`
+      `0 ${literals.month}`
     );
   };
 

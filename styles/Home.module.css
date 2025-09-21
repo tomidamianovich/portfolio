@@ -1,6 +1,6 @@
 .page {
   font-family: var(--font-geist-sans);
-  margin: var(--space-5xl) auto;
+  margin: var(--space-6xl) auto;
   padding: var(--space-3xl);
   max-width: min(var(--content-max-width), calc(100% - var(--space-3xl) * 2));
   background: var(--color-white);
@@ -20,27 +20,31 @@
   margin: var(--space-sm) 0;
 }
 
-.page header h2 {
+.page header h1 {
   font-size: var(--font-size-lg);
-  font-weight: 500;
+  font-weight: 800;
   margin: var(--space-xs) 0 0 0;
 }
 
 .page header p {
   font-size: var(--font-size-base);
   font-weight: 300;
-  color: var(--color-gray-600);
   margin: var(--space-xs) 0 0 0;
+}
+
+.page header svg {
+  width: 16px;
 }
 
 .page header .location,
 .page header .nationality,
-.page header .phone {
+.page header .phone,
+.page header .email,
+.page header .titleDetail {
   font-size: var(--font-size-sm);
-  color: var(--color-gray-600);
   margin: var(--space-sm) 0 0 0;
   display: flex;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   align-items: center;
 }
 
@@ -55,8 +59,14 @@
 .headerPillsWrapper {
   display: flex;
   align-items: start;
+  flex-direction: column;
   margin: var(--space-sm) 0;
   gap: var(--space-sm);
+  margin-left: auto;
+}
+
+.headerPillsWrapper > a > svg {
+  font-size: 18px;
 }
 
 .main {
@@ -71,11 +81,11 @@
   gap: var(--space-xxs);
 }
 
-.about h3 {
+.about h2 {
   margin-bottom: var(--space-sm);
 }
 
-.about h3 {
+.about h2 {
   font-size: var(--font-size-md);
   font-weight: 400;
   line-height: 26px;
@@ -89,7 +99,7 @@
 }
 
 .about p {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: 200;
   line-height: 22px;
   color: var(--color-gray-700);

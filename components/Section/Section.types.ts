@@ -4,15 +4,20 @@ export type LiteralsType = {
   year?: string;
   months?: string;
   month?: string;
+  seeLess: string;
+  seeMore: string;
+  and?: string;
+  of?: string;
 };
 
 export type SectionItem = {
   date?: string;
-  enddate?: string;
-  company?: string;
-  location?: string;
+  endDate?: string;
   title?: string;
-  description?: string;
+  titleDetail?: string;
+  subtitle?: string;
+  mode?: string;
+  content?: string;
 };
 
 export enum SectionTypeEnum {
@@ -25,5 +30,8 @@ export enum SectionTypeEnum {
 export type SectionProps = {
   title: string;
   items: SectionItem[];
-  literals: LiteralsType;
+  sectionName?: string;
+  isGrouped?: boolean;
+  literals?: LiteralsType;
+  isPillsView?: boolean;
 };

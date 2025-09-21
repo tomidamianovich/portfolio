@@ -2,12 +2,13 @@ import "@/i18n";
 import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
-import Pill, { PillVariant } from "@/components/Pill";
+import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/Pill";
 import LanguageSelector from "@/components/LanguageSelector";
-import { IoLocationSharp } from "react-icons/io5";
-import { FaPhone } from "react-icons/fa6";
 
-import { FaFlag } from "react-icons/fa6";
+import { GrLocationPin } from "react-icons/gr";
+import { FaRegFlag } from "react-icons/fa6";
+import { FiPhone } from "react-icons/fi";
+import { GoMail } from "react-icons/go";
 
 import styles from "@/styles/Home.module.css";
 import { useTranslation } from "react-i18next";
@@ -17,6 +18,7 @@ import Section, {
   type SectionItem,
   SectionTypeEnum,
 } from "@/components/Section";
+import GoToTop from "@/components/GoToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +33,7 @@ const geistMono = Geist_Mono({
 type ContactItemType = {
   label: string;
   url: string;
+  icon?: IconTypeEnum;
 };
 
 export default function Home() {
@@ -44,16 +47,16 @@ export default function Home() {
   if (!mounted || !ready) return null;
 
   const contacts = t("contact", { returnObjects: true }) as ContactItemType[];
-  const experience = t("experience.content", {
+  const experience = t("experience.items", {
     returnObjects: true,
   }) as SectionItem[];
-  const education = t("education.content", {
+  const education = t("education.items", {
     returnObjects: true,
   }) as SectionItem[];
-  const languages = t("languages.content", {
+  const languages = t("languages.items", {
     returnObjects: true,
   }) as SectionItem[];
-  const certifications = t("certifications.content", {
+  const certifications = t("certifications.items", {
     returnObjects: true,
   }) as SectionItem[];
   const literals = t("literals", {
@@ -86,36 +89,41 @@ export default function Home() {
             quality={100}
           />
           <div>
-            <h2>{t("name")}</h2>
+            <h1>{t("name")}</h1>
             <p>{t("position")}</p>
-            <p className={styles.location}>
-              <IoLocationSharp />
-              <span>{t("location")}</span>
+            <p className={styles.titleDetail}>
+              <GrLocationPin size={16} aria-hidden />
+              <span>{t("titleDetail")}</span>
             </p>
             <p className={styles.nationality}>
-              <FaFlag />
+              <FaRegFlag size={16} aria-hidden />
               <span>{t("nationality")}</span>
             </p>
             <p className={styles.phone}>
-              <FaPhone />
-              <span>{t("phone")}</span>
+              <FiPhone size={16} aria-hidden />
+              <a href="tel:+34667094477">{t("phone")}</a>
             </p>
-            <div className={styles.headerPillsWrapper}>
-              {Array.isArray(contacts) &&
-                contacts.map((item, index) => (
-                  <Pill
-                    key={index}
-                    text={item.label}
-                    href={item.url}
-                    variant={PillVariant.OUTLINED}
-                  />
-                ))}
-            </div>
+            <p className={styles.email}>
+              <GoMail size={16} aria-hidden />
+              <a href={`mailto:${t("email")}`}>{t("email")}</a>
+            </p>
+          </div>
+          <div className={styles.headerPillsWrapper}>
+            {Array.isArray(contacts) &&
+              contacts.map((item, index) => (
+                <Pill
+                  key={index}
+                  icon={item.icon}
+                  href={item.url}
+                  text={item.label}
+                  variant={PillVariantEnum.OUTLINED}
+                />
+              ))}
           </div>
         </header>
         <main className={styles.main}>
           <div className={styles.about}>
-            <h3>{t("about.title")}</h3>
+            <h2>{t("about.title")}</h2>
             <p>{t("about.content")}</p>
           </div>
           {Object.values(SectionTypeEnum).map((section, key) => (
@@ -123,9 +131,16 @@ export default function Home() {
               title={t(`${section}.title`)}
               items={sectionItems[section] ?? []}
               literals={literals}
+              sectionName={section}
+              isGrouped={section === SectionTypeEnum.CERTIFICATIONS}
+              isPillsView={section === SectionTypeEnum.LANGUAGES}
               key={key}
             />
           ))}
+          <GoToTop
+            ariaLabel={t("goToTop.ariaLabel")}
+            title={t("goToTop.title")}
+          />
         </main>
       </div>
     </>

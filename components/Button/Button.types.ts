@@ -17,4 +17,5 @@ export type ButtonType = {
   active?: boolean;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  children?: React.ReactNode;
 };

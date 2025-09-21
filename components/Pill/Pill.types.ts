@@ -1,17 +1,25 @@
-export enum PillVariant {
+export enum PillVariantEnum {
   PRIMARY = "primary",
   OUTLINED = "outlined",
 }
 
-export enum PillSize {
+export enum PillSizeEnum {
   SMALL = "small",
   MEDIUM = "medium",
   LARGE = "large",
 }
 
+export enum IconTypeEnum {
+  INSTAGRAM = "instagram",
+  LINKEDIN = "linkedin",
+  GITHUB = "github",
+  GMAIL = "gmail",
+}
+
 export type PillType = {
-  text: string;
+  text?: string;
   href?: string;
-  variant?: PillVariant;
-  size?: PillSize;
+  variant?: PillVariantEnum;
+  size?: PillSizeEnum;
+  icon?: IconTypeEnum;
 };

@@ -1,36 +1,104 @@
-.wrapper {
-  gap: var(--space-xxs);
+.defaultView {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-.wrapper h3 {
+.pillsView {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.pillsView ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-lg);
+  margin-left: var(--space-lg);
+}
+
+.groupedView {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.defaultView h2,
+.pillsView h2,
+.groupedView h2 {
   font-size: var(--font-size-md);
   font-weight: 400;
   line-height: 26px;
 }
 
-.wrapper h4 {
-  font-size: var(--font-size-sm);
+.pillsView h2:first-of-type {
+  width: 100%;
+}
+
+.defaultView h3,
+.pillsView h3,
+.groupedView h3 {
+  font-size: var(--font-size-md);
   font-weight: 400;
   line-height: 26px;
 }
 
-.wrapper p {
+.defaultView h4,
+.pillsView h4,
+.groupedView h4 {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.defaultView p,
+.pillsView p,
+.groupedView p {
   font-size: var(--font-size-sm);
   font-weight: 200;
   line-height: 22px;
   color: var(--color-gray-700);
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
+.groupedView ul {
+  list-style: disc inside;
+  margin: 0;
+}
+
+.groupedView ul li {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.groupedView ul li span:nth-child(2) {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
 }
 
 .sectionItem {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  margin-left: var(--space-lg);
+  gap: var(--space-lg);
+}
+
+.sectionItemGrouped {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--space-lg);
+}
+
+.sectionItemGrouped button {
+  margin-left: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.sectionItemGrouped h4 {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 26px;
 }
 
 .sectionItemdates {
@@ -48,7 +116,14 @@
 
 .sectionItemdates p:nth-child(2) {
   color: var(--color-gray-600);
-  font-size: var(--font-size-xxs);
+  font-size: var(--font-size-xs);
+}
+
+.sectionGroupedItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
 .sectionItemContent {

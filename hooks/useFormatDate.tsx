@@ -1,14 +1,15 @@
 import { useTranslation } from "react-i18next";
 import { capitalizeFirst } from "@/helpers/string";
 
-export function useFormatDate() {
+export function useFormatDate(showPresentLiteral = false) {
   const { t, i18n } = useTranslation();
 
   const formatDate = (
     date?: string | Date,
     options?: Intl.DateTimeFormatOptions
   ) => {
-    if (!date) return capitalizeFirst(t("literals.present"));
+    if (date == null && showPresentLiteral)
+      return capitalizeFirst(t("literals.present"));
 
     const d = typeof date === "string" ? new Date(date) : date;
 

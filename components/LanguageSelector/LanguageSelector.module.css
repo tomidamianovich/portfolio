@@ -1,7 +1,17 @@
 .languageSelector {
   position: absolute;
   top: var(--space-sm);
-  right: var(--space-3xl);
+  right: var(--space-5xl);
   display: flex;
   gap: var(--space-sm);
+  align-items: center;
+  background: var(--color-white);
+  box-shadow: 0 0 1px 0px
+    color-mix(in srgb, var(--color-black) 20%, transparent);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 20px;
+}
+
+.languageSelector svg {
+  margin-right: var(--space-sm);
 }

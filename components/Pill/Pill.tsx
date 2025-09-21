@@ -1,25 +1,46 @@
 import React from "react";
 import styles from "./Pill.module.css";
 import type { PillType } from "./Pill.types";
-import { PillVariant, PillSize } from "./Pill.types";
+import { PillVariantEnum, PillSizeEnum, IconTypeEnum } from "./Pill.types";
+
+import { FaLinkedinIn } from "react-icons/fa";
+import { PiInstagramLogoLight } from "react-icons/pi";
+import { FiGithub } from "react-icons/fi";
 
 const Pill: React.FC<PillType> = ({
   text,
   href,
-  variant = PillVariant.PRIMARY,
-  size = PillSize.MEDIUM,
+  variant = PillVariantEnum.PRIMARY,
+  size = PillSizeEnum.MEDIUM,
+  icon,
 }) => {
   const variantClass =
-    variant === PillVariant.OUTLINED ? styles.outlined : styles.primary;
+    variant === PillVariantEnum.OUTLINED ? styles.outlined : styles.primary;
 
   const sizeClass =
-    size === PillSize.SMALL
+    size === PillSizeEnum.SMALL
       ? styles.small
-      : size === PillSize.LARGE
+      : size === PillSizeEnum.LARGE
       ? styles.large
       : styles.medium;
 
-  const classNames = `${styles.pill} ${variantClass} ${sizeClass}`;
+  const clickable = href != null ? styles.clickable : null;
+
+  const classNames = `${styles.pill} ${variantClass} ${sizeClass} ${clickable}`;
+
+  const Icon = () => {
+    if (!icon) return null;
+    switch (icon) {
+      case IconTypeEnum.INSTAGRAM:
+        return <PiInstagramLogoLight />;
+      case IconTypeEnum.LINKEDIN:
+        return <FaLinkedinIn />;
+      case IconTypeEnum.GITHUB:
+        return <FiGithub />;
+      default:
+        return null;
+    }
+  };
 
   if (href) {
     return (
@@ -29,7 +50,8 @@ const Pill: React.FC<PillType> = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        {text}
+        {!!icon && <Icon />}
+        {!!text && <span>{text}</span>}
       </a>
     );
   }
