@@ -1,8 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import styles from "./Section.module.css";
 import { useFormatDate } from "@/hooks/useFormatDate";
 import { useDuration } from "@/hooks/useDuration";
-
 import { SectionTypeEnum, type SectionProps } from "./Section.types";
 import Pill, { PillVariantEnum } from "../Pill";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
@@ -16,148 +15,148 @@ const Section: React.FC<SectionProps> = ({
   isGrouped = false,
   isPillsView = false,
 }) => {
-  if (!items || items.length === 0) return null;
-  const [isMoreItemsVisible, setIsMoreItemsVisible] = React.useState(false);
+  if (!items?.length) return null;
+
+  const [isMoreItemsVisible, setIsMoreItemsVisible] = useState(false);
+  const toggleMore = useCallback(
+    () => setIsMoreItemsVisible((prev) => !prev),
+    []
+  );
+
   const { formatDate } = useFormatDate(
-    sectionName === SectionTypeEnum.EXPERIENCE
+    sectionName === SectionTypeEnum.EXPERIENCE ||
+      sectionName === SectionTypeEnum.EDUCATION
   );
   const { calculate } = useDuration(literals!);
 
-  if (isGrouped) {
-    const groupedItems = useMemo(
-      () =>
-        Object.values(
-          items.reduce<Record<string, SectionProps>>((acc, item) => {
-            const key = item.title!;
-            if (!acc[key]) acc[key] = { title: key, items: [] };
-            acc[key].items!.push(item);
-            return acc;
-          }, {})
-        ).map((group) => ({
-          ...group,
-          items: group.items?.sort((a, b) => {
-            const dateA = new Date(a.date ?? 0).getTime();
-            const dateB = new Date(b.date ?? 0).getTime();
-            return dateB - dateA;
-          }),
-        })),
-      [items]
-    );
+  const groupedItems = useMemo(() => {
+    if (!isGrouped) return [];
+    return Object.values(
+      items.reduce<Record<string, { title: string; items: typeof items }>>(
+        (acc, item) => {
+          const key = item.title!;
+          if (!acc[key]) acc[key] = { title: key, items: [] };
+          acc[key].items.push(item);
+          return acc;
+        },
+        {}
+      )
+    ).map((group) => ({
+      ...group,
+      items: group.items.sort(
+        (a, b) =>
+          new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime()
+      ),
+    }));
+  }, [isGrouped, items]);
 
+  if (isGrouped)
     return (
-      <>
-        <div className={styles.groupedView}>
-          <h2>{title}</h2>
-          {Array.isArray(groupedItems) &&
-            groupedItems.map((group, index) => (
-              <div
-                key={index}
-                className={styles.sectionItemGrouped}
-                id="section-items"
-              >
-                <h4>{group?.title ?? ""}</h4>
-                {group.items?.length
-                  ? group.items
-                      .slice(
-                        0,
-                        isMoreItemsVisible
-                          ? group.items.length
-                          : MAX_ITEMS_DEFAULT
-                      )
-                      .map((subItem, subIndex) => (
-                        <ul
-                          key={subIndex}
-                          className={styles.sectionGroupedItemContent}
-                        >
-                          <li>
-                            {subItem.titleDetail && (
-                              <span>{subItem.titleDetail}</span>
-                            )}
-                            {subItem.date && (
-                              <span> - {formatDate(subItem.date)}</span>
-                            )}
-                          </li>
-                        </ul>
-                      ))
-                  : null}
-                {group.items.length > MAX_ITEMS_DEFAULT && (
-                  <SeeMoreButton
-                    isMoreItemsVisible={isMoreItemsVisible}
-                    onButtonClick={() =>
-                      setIsMoreItemsVisible(!isMoreItemsVisible)
-                    }
-                  />
-                )}
-              </div>
-            ))}
-        </div>
-      </>
+      <div className={styles.groupedView}>
+        <h2>{title}</h2>
+        {groupedItems.map((group) => (
+          <div key={group.title} className={styles.sectionItemGrouped}>
+            <h3>{group.title}</h3>
+            {group.items.map((subItem, index) => {
+              const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
+              return (
+                <ul
+                  key={`${group.title}-${subItem.titleDetail}`}
+                  className={`${styles.sectionGroupedItemContent} ${
+                    isVisible ? styles.visible : styles.hidden
+                  }`}
+                >
+                  <li>
+                    {subItem.titleDetail && <span>{subItem.titleDetail}</span>}
+                    {subItem.date && <span> - {formatDate(subItem.date)}</span>}
+                  </li>
+                </ul>
+              );
+            })}
+            {group.items.length > MAX_ITEMS_DEFAULT && (
+              <SeeMoreButton
+                isMoreItemsVisible={isMoreItemsVisible}
+                onButtonClick={toggleMore}
+              />
+            )}
+          </div>
+        ))}
+      </div>
     );
-  }
 
-  if (isPillsView) {
+  if (isPillsView)
     return (
       <div className={styles.pillsView}>
         <h2>{title}</h2>
         <ul>
-          {Array.isArray(items) &&
-            items.map((item) => (
-              <li>
-                <Pill
-                  text={`${item?.title ?? ""}${
-                    item?.titleDetail ? ` - ${item.titleDetail}` : ""
-                  }`}
-                  variant={PillVariantEnum.OUTLINED}
-                />
-              </li>
-            ))}
+          {items.map((item) => (
+            <li key={item.title}>
+              <Pill
+                text={`${item.title ?? ""}${
+                  item.titleDetail ? ` - ${item.titleDetail}` : ""
+                }`}
+                variant={PillVariantEnum.OUTLINED}
+              />
+            </li>
+          ))}
         </ul>
       </div>
     );
-  }
 
   return (
     <>
-      <div className={styles.defaultView} id="section-items">
+      <div className={styles.defaultView}>
         <h2>{title}</h2>
-        {Array.isArray(items) &&
-          items
-            .slice(0, isMoreItemsVisible ? items.length : MAX_ITEMS_DEFAULT)
-            .map((item, index) => (
-              <div key={index} className={styles.sectionItem}>
-                {!!item.date && (
-                  <div className={styles.sectionItemdates}>
-                    <p>
-                      {formatDate(item.date)}
-                      {"endDate" in item
-                        ? " - " + formatDate(item.endDate)
-                        : ""}
-                    </p>
-                    {item.endDate && (
-                      <p>{calculate(item.date, item.endDate)}</p>
-                    )}
-                  </div>
-                )}
-                <article className={styles.sectionItemContent}>
-                  <h3>
-                    {item?.title ?? ""}
-                    <span>
-                      {item?.titleDetail ? ` - ${item.titleDetail}` : ""}
-                    </span>
-                    <span>{item?.mode ? ` - ${item.mode}` : ""}</span>
-                  </h3>
-                  {!!item.subtitle && <h4>{item.subtitle}</h4>}
-                  {!!item.content && <p>{item.content}</p>}
-                </article>
-              </div>
-            ))}
+        {items.map((item, index) => {
+          const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
+
+          return (
+            <div
+              key={item.title}
+              className={`${styles.sectionItem} ${
+                isVisible ? styles.visible : styles.hidden
+              }`}
+            >
+              {item.date && (
+                <div className={styles.sectionItemdates}>
+                  <p>
+                    {[item.date, item.endDate]
+                      .filter(Boolean)
+                      .map((d) => formatDate(d))
+                      .join(" - ")}
+                  </p>
+                  {item.endDate && <p>{calculate(item.date, item.endDate)}</p>}
+                </div>
+              )}
+              <article className={styles.sectionItemContent}>
+                <h3>
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    item.title
+                  )}
+                  {item.titleDetail && <span> - {item.titleDetail}</span>}
+                  {item.mode && <span> - {item.mode}</span>}
+                </h3>
+                {item.subtitle && <h4>{item.subtitle}</h4>}
+                {item.content && <p>{item.content}</p>}
+              </article>
+            </div>
+          );
+        })}
+        {items.length > MAX_ITEMS_DEFAULT && (
+          <SeeMoreButton
+            isMoreItemsVisible={isMoreItemsVisible}
+            onButtonClick={toggleMore}
+          />
+        )}
       </div>
-      {items.length > MAX_ITEMS_DEFAULT && (
-        <SeeMoreButton
-          isMoreItemsVisible={isMoreItemsVisible}
-          onButtonClick={() => setIsMoreItemsVisible(!isMoreItemsVisible)}
-        />
-      )}
     </>
   );
 };

@@ -11,7 +11,7 @@ import { FiPhone } from "react-icons/fi";
 import { GoMail } from "react-icons/go";
 
 import styles from "@/styles/Home.module.css";
-import { useTranslation } from "react-i18next";
+import * as ReactI18Next from "react-i18next";
 import { useEffect, useState } from "react";
 import Section, {
   LiteralsType,
@@ -37,7 +37,9 @@ type ContactItemType = {
 };
 
 export default function Home() {
-  const { t, ready } = useTranslation("common", { useSuspense: false });
+  const { t, ready } = (ReactI18Next as any).useTranslation("common", {
+    useSuspense: false,
+  });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -79,15 +81,17 @@ export default function Home() {
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
-        <header className={styles.header}>
+        <header>
           <LanguageSelector />
-          <Image
-            src="/profile-pic.png"
-            alt="Foto de perfil de Tomás Damianovich Reddy"
-            width={152}
-            height={152}
-            quality={100}
-          />
+          <div className={styles.imageWrapper}>
+            <Image
+              src="/profile-pic.png"
+              alt="Foto de perfil de Tomás Damianovich Reddy"
+              width={152}
+              height={152}
+              quality={100}
+            />
+          </div>
           <div>
             <h1>{t("name")}</h1>
             <p>{t("position")}</p>
@@ -124,7 +128,9 @@ export default function Home() {
         <main className={styles.main}>
           <div className={styles.about}>
             <h2>{t("about.title")}</h2>
-            <p>{t("about.content")}</p>
+            {!!t("about.content") && (
+              <div dangerouslySetInnerHTML={{ __html: t("about.content") }} />
+            )}
           </div>
           {Object.values(SectionTypeEnum).map((section, key) => (
             <Section

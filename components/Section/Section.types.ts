@@ -15,6 +15,7 @@ export type SectionItem = {
   endDate?: string;
   title?: string;
   titleDetail?: string;
+  link?: string;
   subtitle?: string;
   mode?: string;
   content?: string;
@@ -35,3 +36,5 @@ export type SectionProps = {
   literals?: LiteralsType;
   isPillsView?: boolean;
 };
+
+export type Grouped = { title: string; items: SectionProps["items"] };

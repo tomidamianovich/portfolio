@@ -1,7 +1,7 @@
 .languageSelector {
   position: absolute;
   top: var(--space-sm);
-  right: var(--space-5xl);
+  right: max(var(--space-3xl), calc((100% - 1420px) / 2));
   display: flex;
   gap: var(--space-sm);
   align-items: center;

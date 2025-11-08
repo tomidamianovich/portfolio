@@ -27,7 +27,7 @@
   },
   "about": {
     "title": "Sobre mi",
-    "content": "Me apasiona crear experiencias web eficientes, accesibles y escalables usando React y TypeScript. Actualmente desarrollo plataformas de venta de viajes, hoteles y paquetes con Vite y SSR, enfocándome en SEO y accesibilidad, incluyendo lectores de voz. También he trabajado en la creación de middlewares con Node y en pruebas robustas con Jest y React Testing Library. Mi día a día incluye apoyar y guiar a compañeros más junior, buscando siempre soluciones limpias, mantenibles y centradas en el usuario."
+    "content": "<p>Ingeniero en Sistemas y Desarrollador Frontend Senior especializado en React y TypeScript. Me apasiona crear experiencias web eficientes, accesibles y escalables, combinando performance, diseño y mantenibilidad. Actualmente desarrollo plataformas de alto tráfico en el sector de viajes, participando tanto en arquitectura como en la implementación de componentes críticos.</br>Busco seguir creciendo hacia roles de liderazgo técnico o arquitectura frontend, impulsando buenas prácticas, revisiones de código y diseño de sistemas robustos. Me motiva guiar equipos, elevar estándares y construir productos que aporten valor real al usuario.</p>"
   },
   "contact": [
     {
@@ -55,6 +55,7 @@
         "subtitle": "Desarrollador Senior (React)",
         "content": "Formo parte de un equipo Front como consultor en una plataforma de Viajes de un importante grupo Español, desarrollando principalmente con React, TypeScript, Jest, React Testing Library, Styled Components, Storybook y Node para SSR. He participado también en la creación de middlewares con Node. Uso librerías como React Query y herramientas como Vite y Webpack. Trabajo bajo metodología SCRUM y gestiono tareas con JIRA.",
         "title": "Capitole Consulting",
+        "link": "https://www.capitole-consulting.com/",
         "titleDetail": "Madrid, España",
         "mode": "Hibrido"
       },
@@ -64,6 +65,7 @@
         "subtitle": "Desarrollador Senior - Líder Técnico (React)",
         "content": "Formé parte de un equipo Front en la plataforma de Ecommerce más importante de Latinoamérica, comenzando como Desarrollador Senior y luego Acting Tech-Lead, realizando seguimiento de compañeros, entrevistas técnicas y asesoramiento en planificación a verticales no técnicas. Se utilizaba React, TypeScript, Jest, React Testing Library, SASS, Storybook, herramientas similares a Next y Material UI. Metodología SCRUM y gestión de tareas con JIRA.",
         "title": "MercadoLibre",
+        "link": "https://www.mercadolibre.com.ar/",
         "titleDetail": "Buenos Aires, Argentina",
         "mode": "Hibrido"
       },
@@ -73,6 +75,7 @@
         "subtitle": "Desarrollador SemiSenior (React)",
         "content": "Formé parte de un equipo Front en una plataforma que conecta influencers y marcas. Desarrollo con React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap y consumo de backend en Django (Python). Trabajo remoto entre Argentina y Estados Unidos, usando inglés escrito y oral. ",
         "title": "Cohley",
+        "link": "https://www.cohley.com/",
         "titleDetail": "Nueva York, USA",
         "mode": "Remoto"
       },
@@ -82,6 +85,7 @@
         "subtitle": "Desarrollador SemiSenior (React)",
         "content": "Participé en el desarrollo de una plataforma de gestión de clientes y soporte técnico para un importante Grupo Telefónico Mexicano. Uso de React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API y consumo de backend con Microservicios. Metodología SCRUM y tareas gestionadas con JIRA.",
         "title": "GlobalLogic",
+        "link": "https://www.globallogic.com/",
         "titleDetail": "La Plata, Argentina",
         "mode": "Hibrido"
       },
@@ -91,6 +95,7 @@
         "subtitle": "Desarrollador Junior (Vue)",
         "content": "Formé parte del equipo Front encargado del Portal Institucional de la empresa, usando Vue JS, Jest, React Test Library, Material UI y Redux. Trabajo bajo metodología Agile (SCRUM) y equipo distribuido entre Argentina y Estados Unidos, usando inglés escrito y oral para comunicación diaria. Gestión de tareas con JIRA.",
         "title": "Accenture",
+        "link": "https://www.accenture.com/",
         "titleDetail": "La Plata, Argentina",
         "mode": "Hibrido"
       },
@@ -113,7 +118,16 @@
         "endDate": "2019-02",
         "subtitle": "Ingenieria en Sistemas de Información",
         "title": "Universidad Tecnologica Nacional",
+        "link": "https://www.utn.edu.ar/",
         "titleDetail": "La Plata, Argentina"
+      },
+      {
+        "date": "2025-09",
+        "endDate": null,
+        "subtitle": "Alemán - Nivel A1",
+        "link": "https://www.comunidad.madrid/servicios/educacion/ensenanzas-idiomas",
+        "title": "Escuela oficial de Idiomas de Madrid",
+        "titleDetail": "Madrid, España"
       }
     ]
   },

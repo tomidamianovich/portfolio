@@ -1,35 +1,39 @@
 .defaultView {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
 }
 
 .pillsView {
   display: flex;
   flex-direction: row;
-  gap: var(--space-lg);
   flex-wrap: wrap;
 }
 
 .pillsView ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-lg);
-  margin-left: var(--space-lg);
+  margin: 0 var(--space-md);
+  padding: 0;
 }
 
 .groupedView {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+}
+
+.groupedView div:not(:last-child) {
+  margin-bottom: var(--space-lg);
 }
 
 .defaultView h2,
 .pillsView h2,
 .groupedView h2 {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-weight: 400;
   line-height: 26px;
+  margin-bottom: var(--space-lg);
 }
 
 .pillsView h2:first-of-type {
@@ -42,6 +46,15 @@
   font-size: var(--font-size-md);
   font-weight: 400;
   line-height: 26px;
+}
+
+.defaultView h3 a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.defaultView h3 a:hover {
+  background-color: var(--color-gray-200);
 }
 
 .defaultView h4,
@@ -64,6 +77,7 @@
 .groupedView ul {
   list-style: disc inside;
   margin: 0;
+  padding: 0;
 }
 
 .groupedView ul li {
@@ -77,46 +91,15 @@
   font-size: var(--font-size-sm);
 }
 
-.sectionItem {
-  display: flex;
-  flex-direction: row;
-  margin-left: var(--space-lg);
-  gap: var(--space-lg);
-}
-
 .sectionItemGrouped {
   display: flex;
   flex-direction: column;
-  margin-left: var(--space-lg);
+  margin: 0 var(--space-md);
 }
 
 .sectionItemGrouped button {
-  margin-left: var(--space-md);
+  margin: 0 var(--space-md);
   margin-top: var(--space-xs);
-}
-
-.sectionItemGrouped h4 {
-  font-size: var(--font-size-base);
-  font-weight: 400;
-  line-height: 26px;
-}
-
-.sectionItemdates {
-  white-space: nowrap;
-  max-width: 200px;
-  width: 100%;
-  color: var(--color-gray-600);
-  font-weight: 300;
-  line-height: 26px;
-}
-
-.sectionItemdates p:first-child {
-  font-size: var(--font-size-xs);
-}
-
-.sectionItemdates p:nth-child(2) {
-  color: var(--color-gray-600);
-  font-size: var(--font-size-xs);
 }
 
 .sectionGroupedItemContent {
@@ -124,6 +107,66 @@
   flex-direction: column;
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
+    padding-bottom 0.4s ease-in-out;
+  max-height: 200px;
+  overflow: hidden;
+  opacity: 1;
+  padding-bottom: var(--space-md);
+}
+
+.sectionGroupedItemContent.hidden {
+  opacity: 0;
+  max-height: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.sectionItem {
+  display: flex;
+  flex-direction: row;
+  margin: 0 var(--space-md);
+  gap: var(--space-lg);
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
+    padding-bottom 0.4s ease-in-out;
+  max-height: 500px;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.sectionItem.visible:not(:last-child) {
+  padding-bottom: var(--space-lg);
+}
+
+.sectionItem.hidden {
+  opacity: 0;
+  max-height: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.sectionItem > :first-child {
+  flex: 0 0 220px;
+}
+
+.sectionItem > :last-child {
+  flex: 1;
+}
+
+.sectionItemdates {
+  white-space: nowrap;
+  color: var(--color-gray-600);
+  font-weight: 300;
+  line-height: 26px;
+}
+
+.sectionItemdates p:first-child {
+  font-size: var(--font-size-sm);
+}
+
+.sectionItemdates p:nth-child(2) {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-xs);
 }
 
 .sectionItemContent {
