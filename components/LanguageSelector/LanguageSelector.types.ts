@@ -3,5 +3,3 @@ export enum LanguageSelectorTypeEnum {
   EN = "en",
   DE = "de",
 }
-
-export type LanguageSelectorProps = {};

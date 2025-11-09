@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import LanguageSelector from "./LanguageSelector";
 
 const meta: Meta<typeof LanguageSelector> = {

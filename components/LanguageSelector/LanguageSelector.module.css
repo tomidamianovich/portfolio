@@ -10,6 +10,13 @@
     color-mix(in srgb, var(--color-black) 20%, transparent);
   padding: var(--space-md) var(--space-lg);
   border-radius: 20px;
+
+  @media (max-width: 480px) {
+    margin: 14px var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    right: 0;
+    top: 0;
+  }
 }
 
 .languageSelector svg {

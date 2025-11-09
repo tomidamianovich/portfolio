@@ -8,6 +8,12 @@ export function useFormatDate(showPresentLiteral = false) {
     date?: string | Date,
     options?: Intl.DateTimeFormatOptions
   ) => {
+    if (date === null) {
+      console.log(
+        "Formatting date:",
+        "date: " + date + " showPresentLiteral: " + showPresentLiteral
+      );
+    }
     if (date == null && showPresentLiteral)
       return capitalizeFirst(t("literals.present"));
 

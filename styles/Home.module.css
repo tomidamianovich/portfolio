@@ -7,11 +7,11 @@
   box-shadow: 0 0 1px 0px
     color-mix(in srgb, var(--color-black) 20%, transparent);
   border-radius: 4px;
-}
 
-@media (max-width: var(--breakpoint-tablet)) {
-  .imageWrapper {
-    width: 100%;
+  @media (max-width: 480px) {
+    margin: var(--space-5xl) var(--space-md) var(--space-lg);
+    max-width: calc(100% - var(--space-md) * 2);
+    padding: var(--space-xl);
   }
 }
 
@@ -20,6 +20,10 @@
   flex-wrap: wrap;
   align-items: start;
   gap: var(--space-lg);
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
 }
 
 .page header div:nth-child(1) {
@@ -30,16 +34,52 @@
   font-size: var(--font-size-xl);
   font-weight: 400;
   margin: var(--space-xs) 0 0 0;
+
+  @media (max-width: 1024px) {
+    font-size: var(--font-size-lg);
+  }
 }
 
 .page header p {
   font-size: var(--font-size-md);
   font-weight: 300;
   margin: var(--space-xs) 0 0 0;
+
+  @media (max-width: 1024px) {
+    text-align: center;
+    font-size: var(--font-size-base);
+  }
 }
 
 .page header svg {
   width: 16px;
+}
+
+@media (max-width: 1024px) {
+  .page header .imageWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page header .baseInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page header .baseInfo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .page header .location,
@@ -69,6 +109,14 @@
   margin: var(--space-sm) 0;
   gap: var(--space-sm);
   margin-left: auto;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: revert;
+  }
 }
 
 .headerPillsWrapper > a > svg {
@@ -89,9 +137,6 @@
 
 .about h2 {
   margin-bottom: var(--space-sm);
-}
-
-.about h2 {
   font-size: var(--font-size-lg);
   font-weight: 400;
   line-height: 26px;
@@ -109,8 +154,13 @@
   font-weight: 200;
   line-height: 22px;
   color: var(--color-gray-700);
+  text-align: left;
 }
 
 .about div {
   margin: 0 var(--space-md);
+
+  @media (max-width: 1024px) {
+    margin: 0;
+  }
 }

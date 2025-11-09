@@ -2,7 +2,11 @@ import React, { useMemo, useState, useCallback } from "react";
 import styles from "./Section.module.css";
 import { useFormatDate } from "@/hooks/useFormatDate";
 import { useDuration } from "@/hooks/useDuration";
-import { SectionTypeEnum, type SectionProps } from "./Section.types";
+import {
+  SectionTypeEnum,
+  type SectionProps,
+  type SectionItem,
+} from "./Section.types";
 import Pill, { PillVariantEnum } from "../Pill";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
 import SeeMoreButton from "@/components/SeeMoreButton";
@@ -15,8 +19,6 @@ const Section: React.FC<SectionProps> = ({
   isGrouped = false,
   isPillsView = false,
 }) => {
-  if (!items?.length) return null;
-
   const [isMoreItemsVisible, setIsMoreItemsVisible] = useState(false);
   const toggleMore = useCallback(
     () => setIsMoreItemsVisible((prev) => !prev),
@@ -103,6 +105,19 @@ const Section: React.FC<SectionProps> = ({
       </div>
     );
 
+  const dates = (item: SectionItem, isMobile: boolean) =>
+    item.date && (
+      <div
+        className={
+          (styles.sectionItemdates,
+          isMobile ? styles.mobileDates : styles.desktopDates)
+        }
+      >
+        <p>{[item.date, item.endDate].map((d) => formatDate(d)).join(" - ")}</p>
+        {item.endDate && <p>{calculate(item.date, item.endDate)}</p>}
+      </div>
+    );
+
   return (
     <>
       <div className={styles.defaultView}>
@@ -117,17 +132,7 @@ const Section: React.FC<SectionProps> = ({
                 isVisible ? styles.visible : styles.hidden
               }`}
             >
-              {item.date && (
-                <div className={styles.sectionItemdates}>
-                  <p>
-                    {[item.date, item.endDate]
-                      .filter(Boolean)
-                      .map((d) => formatDate(d))
-                      .join(" - ")}
-                  </p>
-                  {item.endDate && <p>{calculate(item.date, item.endDate)}</p>}
-                </div>
-              )}
+              {dates(item, false)}
               <article className={styles.sectionItemContent}>
                 <h3>
                   {item.link ? (
@@ -145,6 +150,7 @@ const Section: React.FC<SectionProps> = ({
                   {item.mode && <span> - {item.mode}</span>}
                 </h3>
                 {item.subtitle && <h4>{item.subtitle}</h4>}
+                {dates(item, true)}
                 {item.content && <p>{item.content}</p>}
               </article>
             </div>

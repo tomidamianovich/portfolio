@@ -11,7 +11,7 @@ import { FiPhone } from "react-icons/fi";
 import { GoMail } from "react-icons/go";
 
 import styles from "@/styles/Home.module.css";
-import * as ReactI18Next from "react-i18next";
+import { useTranslation, UseTranslationResponse } from "react-i18next";
 import { useEffect, useState } from "react";
 import Section, {
   LiteralsType,
@@ -37,9 +37,9 @@ type ContactItemType = {
 };
 
 export default function Home() {
-  const { t, ready } = (ReactI18Next as any).useTranslation("common", {
+  const { t, ready } = useTranslation("common", {
     useSuspense: false,
-  });
+  }) as UseTranslationResponse<"common", undefined>;
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function Home() {
               quality={100}
             />
           </div>
-          <div>
+          <div className={styles.baseInfo}>
             <h1>{t("name")}</h1>
             <p>{t("position")}</p>
             <p className={styles.titleDetail}>

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Pill from "./Pill";
 import { PillSizeEnum, PillVariantEnum } from "./Pill.types";
 

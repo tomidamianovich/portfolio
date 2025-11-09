@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 const SeeMoreButton: FC<SeeMoreButtonProps> = ({
   onButtonClick,
   isMoreItemsVisible,
+  ...props
 }) => {
   const { t } = useTranslation("common", { useSuspense: false });
 
@@ -28,11 +29,12 @@ const SeeMoreButton: FC<SeeMoreButtonProps> = ({
       aria-expanded={isMoreItemsVisible}
       aria-controls="section-items"
       onClick={handleButtonClick}
+      {...props}
     >
       {isMoreItemsVisible ? (
-        <CiCircleMinus size={24} />
+        <CiCircleMinus data-testid="icon-minus" size={24} />
       ) : (
-        <CiCirclePlus size={24} />
+        <CiCirclePlus data-testid="icon-plus" size={24} />
       )}
     </Button>
   );

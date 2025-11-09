@@ -1,14 +1,11 @@
 import React from "react";
 import styles from "./LanguageSelector.module.css";
-import {
-  type LanguageSelectorProps,
-  LanguageSelectorTypeEnum,
-} from "./LanguageSelector.types";
+import { LanguageSelectorTypeEnum } from "./LanguageSelector.types";
 import { useTranslation } from "react-i18next";
 import Button, { ButtonSize, ButtonVariant } from "@/components/Button";
 import { GrLanguage } from "react-icons/gr";
 
-const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
+const LanguageSelector: React.FC = () => {
   const { i18n, t } = useTranslation("common", { useSuspense: false });
 
   const handleChangeLanguage = (lang: string) => {

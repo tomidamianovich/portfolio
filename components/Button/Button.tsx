@@ -32,10 +32,9 @@ const Button: React.FC<ButtonType> = ({
 
   return (
     <button
-      className={`${styles.button} ${variantClass} ${sizeClass} `}
+      className={`${styles.button} ${variantClass} ${sizeClass}`}
       type="button"
       onClick={handleClick}
-      aria-selected={active}
       aria-pressed={active}
       aria-disabled={disabled}
       disabled={disabled}
