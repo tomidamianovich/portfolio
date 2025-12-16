@@ -27,7 +27,7 @@
   },
   "about": {
     "title": "About me",
-    "content": "I’m passionate about building efficient, accessible, and scalable web experiences using React and TypeScript. I currently develop travel, hotel, and package booking platforms with Vite and SSR, focusing on SEO and accessibility, including screen readers. I have also worked on creating Node middlewares and robust testing with Jest and React Testing Library. My day-to-day includes supporting and mentoring more junior teammates, always striving for clean, maintainable, and user-centered solutions."
+    "content": "<p>I’m passionate about building efficient, accessible, and scalable web experiences using React and TypeScript. I currently develop travel, hotel, and package booking platforms with Vite and SSR, focusing on SEO and accessibility, including screen readers. I have also worked on creating Node middlewares and robust testing with Jest and React Testing Library. My day-to-day includes supporting and mentoring more junior teammates, always striving for clean, maintainable, and user-centered solutions.</p>"
   },
   "contact": [
     {
@@ -55,6 +55,7 @@
         "subtitle": "Senior Developer (React)",
         "content": "I am part of a Frontend team as a consultant on a Travel platform for a major Spanish group, mainly developing with React, TypeScript, Jest, React Testing Library, Styled Components, Storybook, and Node for SSR. I also participated in creating Node middlewares. I use libraries like React Query and tools like Vite and Webpack. I work under SCRUM methodology and manage tasks with JIRA.",
         "title": "Capitole Consulting",
+        "link": "https://www.capitole-consulting.com/",
         "titleDetail": "Madrid, Spain",
         "mode": "Hybrid"
       },
@@ -64,6 +65,7 @@
         "subtitle": "Senior Developer - Technical Lead (React)",
         "content": "I was part of a Frontend team in the largest eCommerce platform in Latin America, starting as Senior Developer and later as Acting Tech-Lead, performing peer follow-ups, technical interviews, and advising on planning to non-technical verticals. We used React, TypeScript, Jest, React Testing Library, SASS, Storybook, Next-like tools, and Material UI. SCRUM methodology and task management with JIRA.",
         "title": "MercadoLibre",
+        "link": "https://www.mercadolibre.com.ar/",
         "titleDetail": "Buenos Aires, Argentina",
         "mode": "Hybrid"
       },
@@ -73,6 +75,7 @@
         "subtitle": "Semi-Senior Developer (React)",
         "content": "I was part of a Frontend team on a platform connecting influencers and brands. Development with React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap, and backend consumption with Django (Python). Remote work between Argentina and the USA, using written and spoken English.",
         "title": "Cohley",
+        "link": "https://www.cohley.com/",
         "titleDetail": "New York, USA",
         "mode": "Remote"
       },
@@ -82,6 +85,7 @@
         "subtitle": "Semi-Senior Developer (React)",
         "content": "I participated in the development of a client management and support platform for a major Mexican Telecom Group. Using React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API, and backend consumption with microservices. SCRUM methodology and task management with JIRA.",
         "title": "GlobalLogic",
+        "link": "https://www.globallogic.com/",
         "titleDetail": "La Plata, Argentina",
         "mode": "Hybrid"
       },
@@ -91,6 +95,7 @@
         "subtitle": "Junior Developer (Vue)",
         "content": "I was part of the Frontend team responsible for the company's Institutional Portal, using Vue JS, Jest, React Testing Library, Material UI, and Redux. Agile methodology (SCRUM) with a distributed team between Argentina and the USA, using written and spoken English for daily communication. Task management with JIRA.",
         "title": "Accenture",
+        "link": "https://www.accenture.com/",
         "titleDetail": "La Plata, Argentina",
         "mode": "Hybrid"
       },
@@ -113,6 +118,7 @@
         "endDate": "2019-02",
         "subtitle": "Bachelor in Information Systems Engineering",
         "title": "National Technological University",
+        "link": "https://www.utn.edu.ar/",
         "titleDetail": "La Plata, Argentina"
       }
     ]

@@ -1,25 +1,32 @@
 .page {
   font-family: var(--font-geist-sans);
-  margin: var(--space-6xl) auto;
-  padding: var(--space-3xl);
-  max-width: min(var(--content-max-width), calc(100% - var(--space-3xl) * 2));
-  background: var(--color-white);
-  box-shadow: 0 0 1px 0px
-    color-mix(in srgb, var(--color-black) 20%, transparent);
-  border-radius: 4px;
+  margin: var(--space-4xl) auto;
+  max-width: min(var(--content-max-width), calc(100% - var(--space-5xl) * 2));
+
+  transition: box-shadow 0.3s ease;
 
   @media (max-width: 480px) {
-    margin: var(--space-5xl) var(--space-md) var(--space-lg);
+    margin: var(--space-md) var(--space-md) var(--space-lg);
     max-width: calc(100% - var(--space-md) * 2);
     padding: var(--space-xl);
   }
 }
 
+.languageSelectorWrapper {
+  width: 100%;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
 .page header {
   display: flex;
   flex-wrap: wrap;
-  align-items: start;
-  gap: var(--space-lg);
+  align-items: flex-start;
+  gap: var(--space-2xl);
+  background: var(--color-white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: var(--space-xl);
+  padding: var(--space-xl);
 
   @media (max-width: 1024px) {
     justify-content: center;
@@ -31,19 +38,22 @@
 }
 
 .page header h1 {
-  font-size: var(--font-size-xl);
-  font-weight: 400;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
   margin: var(--space-xs) 0 0 0;
+  color: var(--color-gray-800);
+  letter-spacing: -0.02em;
 
   @media (max-width: 1024px) {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
 }
 
 .page header p {
   font-size: var(--font-size-md);
-  font-weight: 300;
-  margin: var(--space-xs) 0 0 0;
+  font-weight: 400;
+  margin: var(--space-sm) 0 0 0;
+  color: var(--color-gray-700);
 
   @media (max-width: 1024px) {
     text-align: center;
@@ -53,6 +63,12 @@
 
 .page header svg {
   width: 16px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 @media (max-width: 1024px) {
@@ -88,10 +104,28 @@
 .page header .email,
 .page header .titleDetail {
   font-size: var(--font-size-sm);
-  margin: var(--space-sm) 0 0 0;
+  margin: var(--space-md) 0 0 0;
   display: flex;
-  gap: var(--space-sm);
+  gap: 12px;
   align-items: center;
+  color: var(--color-gray-900);
+
+  & > a {
+    color: var(--color-gray-900);
+  }
+}
+
+.page header .phone a,
+.page header .email a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+}
+
+.page header .phone a:hover,
+.page header .email a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 .page header img {
@@ -99,12 +133,19 @@
   border-radius: 50%;
   width: var(--img-size);
   height: var(--img-size);
-  box-shadow: 0 0 3px var(--color-black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 4px var(--color-white);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page header img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2),
+    0 0 0 4px var(--color-primary-light);
 }
 
 .headerPillsWrapper {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   margin: var(--space-sm) 0;
   gap: var(--space-sm);
@@ -126,20 +167,44 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: var(--space-2xl);
   grid-row-start: 2;
 }
 
 .about {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-2xl);
   gap: var(--space-xxs);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-gray-200);
+
+  background: var(--color-white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: var(--space-xl);
+  padding: var(--space-xl);
 }
 
 .about h2 {
-  margin-bottom: var(--space-sm);
-  font-size: var(--font-size-lg);
-  font-weight: 400;
-  line-height: 26px;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-gray-800);
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.about h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-xs);
+  margin-top: var(--space-sm);
 }
 
 .about h4 {
@@ -150,9 +215,9 @@
 }
 
 .about p {
-  font-size: var(--font-size-sm);
-  font-weight: 200;
-  line-height: 22px;
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--color-gray-700);
   text-align: left;
 }

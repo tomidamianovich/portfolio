@@ -17,17 +17,19 @@ const LanguageSelector: React.FC = () => {
       className={styles.languageSelector}
       aria-label={t("literals.languageSelectorAriaLabel")}
     >
-      <GrLanguage size={22} aria-hidden />
-      {Object.values(LanguageSelectorTypeEnum).map((language, key) => (
-        <Button
-          text={language}
-          size={ButtonSize.MEDIUM}
-          variant={ButtonVariant.OUTLINED}
-          key={key}
-          active={i18n.language === language}
-          onClick={() => handleChangeLanguage(language)}
-        />
-      ))}
+      <GrLanguage size={18} aria-hidden />
+      <div className={styles.languageSelectorButtonsWrapper}>
+        {Object.values(LanguageSelectorTypeEnum).map((language, key) => (
+          <Button
+            text={language}
+            size={ButtonSize.MEDIUM}
+            variant={ButtonVariant.SECONDARY}
+            key={key}
+            active={i18n.language === language}
+            onClick={() => handleChangeLanguage(language)}
+          />
+        ))}
+      </div>
     </nav>
   );
 };

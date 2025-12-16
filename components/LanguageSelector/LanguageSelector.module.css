@@ -1,15 +1,12 @@
 .languageSelector {
-  position: absolute;
-  top: var(--space-sm);
-  right: max(var(--space-3xl), calc((100% - 1420px) / 2));
+  width: 100%;
   display: flex;
   gap: var(--space-sm);
   align-items: center;
-  background: var(--color-white);
-  box-shadow: 0 0 1px 0px
-    color-mix(in srgb, var(--color-black) 20%, transparent);
-  padding: var(--space-md) var(--space-lg);
-  border-radius: 20px;
+  margin: 0 auto;
+  justify-content: flex-end;
+  padding: var(--space-md) 0;
+  max-width: var(--content-max-width);
 
   @media (max-width: 480px) {
     margin: 14px var(--space-md);
@@ -19,6 +16,13 @@
   }
 }
 
-.languageSelector svg {
-  margin-right: var(--space-sm);
+.languageSelectorButtonsWrapper {
+  background: var(--color-gray-200);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  row-gap: var(--space-sm);
+  margin-left: var(--space-sm);
 }

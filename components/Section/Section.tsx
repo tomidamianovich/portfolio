@@ -10,6 +10,7 @@ import {
 import Pill, { PillVariantEnum } from "../Pill";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
 import SeeMoreButton from "@/components/SeeMoreButton";
+import { MdWork, MdHistory } from "react-icons/md";
 
 const Section: React.FC<SectionProps> = ({
   title,
@@ -114,25 +115,44 @@ const Section: React.FC<SectionProps> = ({
         }
       >
         <p>{[item.date, item.endDate].map((d) => formatDate(d)).join(" - ")}</p>
-        {item.endDate && <p>{calculate(item.date, item.endDate)}</p>}
       </div>
     );
 
+  const isExperience = sectionName === SectionTypeEnum.EXPERIENCE;
+  const isEducation = sectionName === SectionTypeEnum.EDUCATION;
+
   return (
     <>
-      <div className={styles.defaultView}>
+      <div
+        className={`${styles.defaultView} ${
+          isExperience ? styles.timelineView : ""
+        } ${isEducation ? styles.gridView : ""}`}
+      >
         <h2>{title}</h2>
+        {isExperience && <div className={styles.timelineLine}></div>}
         {items.map((item, index) => {
           const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
+          const isCurrent = !item.endDate && item.date;
+          const IconComponent = isExperience
+            ? isCurrent
+              ? MdWork
+              : MdHistory
+            : null;
 
           return (
             <div
               key={item.title}
               className={`${styles.sectionItem} ${
                 isVisible ? styles.visible : styles.hidden
+              } ${isExperience ? styles.timelineItem : ""} ${
+                isEducation ? styles.gridItem : ""
               }`}
             >
-              {dates(item, false)}
+              {isExperience && IconComponent && (
+                <div className={styles.timelineIcon}>
+                  <IconComponent size={16} />
+                </div>
+              )}
               <article className={styles.sectionItemContent}>
                 <h3>
                   {item.link ? (
@@ -150,9 +170,11 @@ const Section: React.FC<SectionProps> = ({
                   {item.mode && <span> - {item.mode}</span>}
                 </h3>
                 {item.subtitle && <h4>{item.subtitle}</h4>}
-                {dates(item, true)}
+                {isExperience && dates(item, false)}
+                {!isExperience && dates(item, true)}
                 {item.content && <p>{item.content}</p>}
               </article>
+              {!isExperience && dates(item, false)}
             </div>
           );
         })}

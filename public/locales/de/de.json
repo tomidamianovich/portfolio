@@ -27,7 +27,7 @@
   },
   "about": {
     "title": "Über mich",
-    "content": "Ich brenne dafür, effiziente, zugängliche und skalierbare Web-Erlebnisse mit React und TypeScript zu entwickeln. Derzeit arbeite ich an Plattformen für Reisen, Hotels und Pakete mit Vite und SSR, mit Fokus auf SEO und Barrierefreiheit, einschließlich Screenreader. Ich habe auch an der Erstellung von Node-Middlewares gearbeitet und robustes Testing mit Jest und React Testing Library durchgeführt. Mein Arbeitsalltag umfasst zudem die Unterstützung und Betreuung jüngerer Kollegen, stets mit dem Ziel, saubere, wartbare und nutzerzentrierte Lösungen zu liefern."
+    "content": "<p>Ich brenne dafür, effiziente, zugängliche und skalierbare Web-Erlebnisse mit React und TypeScript zu entwickeln. Derzeit arbeite ich an Plattformen für Reisen, Hotels und Pakete mit Vite und SSR, mit Fokus auf SEO und Barrierefreiheit, einschließlich Screenreader. Ich habe auch an der Erstellung von Node-Middlewares gearbeitet und robustes Testing mit Jest und React Testing Library durchgeführt. Mein Arbeitsalltag umfasst zudem die Unterstützung und Betreuung jüngerer Kollegen, stets mit dem Ziel, saubere, wartbare und nutzerzentrierte Lösungen zu liefern.</p>"
   },
   "contact": [
     {
@@ -56,7 +56,8 @@
         "content": "Ich bin Teil eines Frontend-Teams als Berater auf einer Reiseplattform für eine große spanische Gruppe, hauptsächlich entwickelt mit React, TypeScript, Jest, React Testing Library, Styled Components, Storybook und Node für SSR. Ich habe auch an der Erstellung von Node-Middlewares mitgewirkt. Ich nutze Bibliotheken wie React Query und Tools wie Vite und Webpack. Ich arbeite nach der SCRUM-Methodik und verwalte Aufgaben mit JIRA.",
         "title": "Capitole Consulting",
         "titleDetail": "Madrid, Spanien",
-        "mode": "Hybrid"
+        "mode": "Hybrid",
+        "link": "https://www.capitole-consulting.com/"
       },
       {
         "date": "2021-05",
@@ -65,7 +66,8 @@
         "content": "Ich war Teil eines Frontend-Teams der größten E-Commerce-Plattform in Lateinamerika, begann als Senior Developer und später als Acting Tech-Lead, führte Peer-Follow-ups, technische Interviews und Beratung bei der Planung für nicht-technische Bereiche durch. Wir nutzten React, TypeScript, Jest, React Testing Library, SASS, Storybook, Next-ähnliche Tools und Material UI. SCRUM-Methodik und Aufgabenverwaltung mit JIRA.",
         "title": "MercadoLibre",
         "titleDetail": "Buenos Aires, Argentinien",
-        "mode": "Hybrid"
+        "mode": "Hybrid",
+        "link": "https://www.mercadolibre.com.ar/"
       },
       {
         "date": "2020-01",
@@ -74,7 +76,8 @@
         "content": "Ich war Teil eines Frontend-Teams auf einer Plattform, die Influencer und Marken verbindet. Entwicklung mit React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap und Backend-Anbindung mit Django (Python). Remote-Arbeit zwischen Argentinien und den USA, unter Verwendung von geschriebenem und gesprochenem Englisch.",
         "title": "Cohley",
         "titleDetail": "New York, USA",
-        "mode": "Remote"
+        "mode": "Remote",
+        "link": "https://www.cohley.com/"
       },
       {
         "date": "2019-07",
@@ -83,7 +86,8 @@
         "content": "Ich habe an der Entwicklung einer Kundenmanagement- und Supportplattform für eine große mexikanische Telekom-Gruppe mitgewirkt. Verwendung von React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API und Backend-Anbindung mit Microservices. SCRUM-Methodik und Aufgabenverwaltung mit JIRA.",
         "title": "GlobalLogic",
         "titleDetail": "La Plata, Argentinien",
-        "mode": "Hybrid"
+        "mode": "Hybrid",
+        "link": "https://www.globallogic.com/"
       },
       {
         "date": "2018-07",
@@ -92,7 +96,8 @@
         "content": "Ich war Teil des Frontend-Teams, das für das institutionelle Portal des Unternehmens verantwortlich war, unter Verwendung von Vue JS, Jest, React Testing Library, Material UI und Redux. Agile Methodik (SCRUM) mit einem verteilten Team zwischen Argentinien und den USA, tägliche Kommunikation in Englisch schriftlich und mündlich. Aufgabenverwaltung mit JIRA.",
         "title": "Accenture",
         "titleDetail": "La Plata, Argentinien",
-        "mode": "Hybrid"
+        "mode": "Hybrid",
+        "link": "https://www.accenture.com/"
       },
       {
         "date": "2016-06",
@@ -113,7 +118,8 @@
         "endDate": "2019-02",
         "subtitle": "Bachelor in Information Systems Engineering",
         "title": "Nationale Technologische Universität",
-        "titleDetail": "La Plata, Argentinien"
+        "titleDetail": "La Plata, Argentinien",
+        "link": "https://www.utn.edu.ar/"
       }
     ]
   },

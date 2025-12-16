@@ -78,11 +78,13 @@ export default function Home() {
         <title>{t("seo.title")}</title>
         <meta name="description" content={t("seo.description")} />
       </Head>
+      <div className={styles.languageSelectorWrapper}>
+        <LanguageSelector />
+      </div>
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <header>
-          <LanguageSelector />
           <div className={styles.imageWrapper}>
             <Image
               src="/profile-pic.png"

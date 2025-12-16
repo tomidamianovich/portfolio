@@ -1,8 +1,8 @@
 .button {
-  background-color: var(--color-gray-300);
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-400);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-md) var(--space-lg);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -10,39 +10,60 @@
   gap: var(--space-sm);
   width: fit-content;
   margin: auto;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  color: var(--color-gray-700);
 }
 
-.button:not([aria-selected="true"]):hover {
-  background-color: var(--color-gray-200);
+.button:not([aria-pressed="true"]):not(:disabled):hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
   cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
 }
 
 .button:disabled {
   background-color: var(--color-gray-300);
   cursor: default;
+  opacity: 0.6;
 }
 
-.button[aria-selected="true"] {
-  background-color: var(--color-gray-300);
+.button[aria-pressed="true"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* Variants */
 .secondary {
-  background-color: var(--color-gray-500);
+  background-color: transparent;
+  border: none;
 }
 
-.secondary:not([aria-selected="true"]):hover {
+.secondary:not([aria-pressed="true"]):not(:disabled):hover {
   background-color: var(--color-gray-600);
+  color: var(--color-white);
 }
 
 .outlined {
-  background-color: var(--color-gray-100);
-  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-400);
 }
 
-.outlined:not([aria-selected="true"]):hover {
-  border: 1px solid var(--color-gray-200);
-  background-color: var(--color-gray-200);
+.outlined:not([aria-pressed="true"]):not(:disabled):hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.outlined[aria-pressed="true"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* Sizes */
@@ -53,7 +74,7 @@
 
 .medium {
   font-size: var(--font-size-xs);
-  padding: 10px;
+  padding: 5px 10px;
 
   @media (max-width: 480px) {
     padding: 8px;
