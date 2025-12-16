@@ -1,4 +1,4 @@
-.languageSelector {
+.darkModeToggle {
   width: 100%;
   display: flex;
   gap: var(--space-sm);
@@ -16,7 +16,7 @@
   }
 }
 
-.languageSelectorButtonsWrapper {
+.darkModeToggleButtonsWrapper {
   background: var(--color-gray-200);
   border-radius: var(--border-radius-xl);
   padding: var(--space-sm);

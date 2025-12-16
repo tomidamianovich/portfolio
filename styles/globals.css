@@ -11,10 +11,11 @@
   --color-black: #000000;
 
   /* Accent colors for visual interest */
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #2563eb;
-  --color-primary-darker: #1d4ed8;
+  /* Updated primary blues for better contrast on light backgrounds */
+  --color-primary: #2658ff;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-primary-darker: #1e3a8a;
   --color-accent: #7c3aed;
   --color-accent-light: #8b5cf6;
   --color-success: #10b981;
@@ -81,8 +82,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-gray-700);
-    --foreground: var(--color-gray-300);
+    --background: var(--color-gray-800);
+    --foreground: var(--color-gray-200);
+    --color-primary: #60a5fa;
+    --color-primary-light: #93c5fd;
+    --color-primary-dark: #3b82f6;
+    --color-primary-darker: #1e40af;
+    --color-accent: #a855f7;
+    --color-accent-light: #c084fc;
   }
 }
 

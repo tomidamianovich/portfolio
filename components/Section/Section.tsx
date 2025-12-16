@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useCallback } from "react";
 import styles from "./Section.module.css";
 import { useFormatDate } from "@/hooks/useFormatDate";
-import { useDuration } from "@/hooks/useDuration";
 import {
   SectionTypeEnum,
   type SectionProps,
@@ -18,7 +17,6 @@ type Group = { title: string; items: SectionItem[] };
 const Section: React.FC<SectionProps> = ({
   title,
   items,
-  literals,
   sectionName,
   isGrouped = false,
   isPillsView = false,
@@ -37,7 +35,6 @@ const Section: React.FC<SectionProps> = ({
     sectionName === SectionTypeEnum.EXPERIENCE ||
       sectionName === SectionTypeEnum.EDUCATION
   );
-  const { calculate } = useDuration(literals!);
 
   const groupedItems = useMemo(() => {
     if (!isGrouped) return [];
