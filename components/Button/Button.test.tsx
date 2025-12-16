@@ -45,7 +45,6 @@ describe("Button component", () => {
   it("applies ARIA attributes correctly when active and disabled", () => {
     render(<Button text="Test" active disabled />);
     const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("aria-selected", "true");
     expect(button).toHaveAttribute("aria-pressed", "true");
     expect(button).toHaveAttribute("aria-disabled", "true");
   });

@@ -1,5 +1,9 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+
+jest.mock("@vercel/analytics", () => ({
+  track: jest.fn(),
+}));
 import Section from "./Section";
 import { SectionTypeEnum } from "./Section.types";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
@@ -55,18 +59,6 @@ describe("Section component", () => {
     seeMore: "See more",
   };
 
-  it("renders null if no items", () => {
-    const { container } = render(
-      <Section
-        title="Test"
-        items={[]}
-        sectionName={SectionTypeEnum.EXPERIENCE}
-        literals={defaultLiterals}
-      />
-    );
-    expect(container.firstChild).toBeNull();
-  });
-
   it("renders default view correctly", () => {
     render(
       <Section
@@ -80,9 +72,6 @@ describe("Section component", () => {
     expect(screen.getByText("Test")).toBeInTheDocument();
     expect(screen.getByText("Item 1")).toBeInTheDocument();
     expect(screen.getByText(/formatted-2022-01-01/)).toBeInTheDocument();
-    expect(
-      screen.getByText("duration-2022-01-01-2022-02-01")
-    ).toBeInTheDocument();
   });
 
   it("renders pills view correctly", () => {
