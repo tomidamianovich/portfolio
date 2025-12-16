@@ -1,15 +1,20 @@
-import React from "react";
+import React, { type ComponentProps } from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 import Button, { ButtonVariant, ButtonSize } from "@/components/Button";
 import { type FC } from "react";
 import { type SeeMoreButtonProps } from "./SeeMoreButton.types";
 import { useTranslation } from "react-i18next";
 
-const SeeMoreButton: FC<SeeMoreButtonProps> = ({
+type ButtonProps = Omit<
+  ComponentProps<typeof Button>,
+  "onClick" | "text" | "variant" | "size"
+>;
+
+const SeeMoreButton: FC<SeeMoreButtonProps & ButtonProps> = ({
   onButtonClick,
   isMoreItemsVisible,
   ...props
-}) => {
+}: SeeMoreButtonProps & ButtonProps) => {
   const { t } = useTranslation("common", { useSuspense: false });
 
   const handleButtonClick = (e: Event) => {

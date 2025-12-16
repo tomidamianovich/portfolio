@@ -11,6 +11,9 @@ import Pill, { PillVariantEnum } from "../Pill";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
 import SeeMoreButton from "@/components/SeeMoreButton";
 import { MdWork, MdHistory } from "react-icons/md";
+import { track } from "@vercel/analytics";
+
+type Group = { title: string; items: SectionItem[] };
 
 const Section: React.FC<SectionProps> = ({
   title,
@@ -19,12 +22,16 @@ const Section: React.FC<SectionProps> = ({
   sectionName,
   isGrouped = false,
   isPillsView = false,
-}) => {
+}: SectionProps) => {
   const [isMoreItemsVisible, setIsMoreItemsVisible] = useState(false);
-  const toggleMore = useCallback(
-    () => setIsMoreItemsVisible((prev) => !prev),
-    []
-  );
+  const toggleMore = useCallback(() => {
+    const nextValue = !isMoreItemsVisible;
+    track("section_toggle_more", {
+      section: sectionName,
+      expanded: nextValue,
+    });
+    setIsMoreItemsVisible(nextValue);
+  }, [isMoreItemsVisible, sectionName]);
 
   const { formatDate } = useFormatDate(
     sectionName === SectionTypeEnum.EXPERIENCE ||
@@ -34,20 +41,20 @@ const Section: React.FC<SectionProps> = ({
 
   const groupedItems = useMemo(() => {
     if (!isGrouped) return [];
-    return Object.values(
-      items.reduce<Record<string, { title: string; items: typeof items }>>(
-        (acc, item) => {
-          const key = item.title!;
-          if (!acc[key]) acc[key] = { title: key, items: [] };
-          acc[key].items.push(item);
-          return acc;
-        },
-        {}
-      )
-    ).map((group) => ({
+    const sectionItems: SectionItem[] = items;
+    const grouped = sectionItems.reduce<Record<string, Group>>(
+      (acc: Record<string, Group>, item: SectionItem) => {
+        const key = item.title ?? "";
+        if (!acc[key]) acc[key] = { title: key, items: [] };
+        acc[key].items.push(item);
+        return acc;
+      },
+      {}
+    );
+    return Object.values(grouped).map((group) => ({
       ...group,
       items: group.items.sort(
-        (a, b) =>
+        (a: SectionItem, b: SectionItem) =>
           new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime()
       ),
     }));
@@ -57,10 +64,10 @@ const Section: React.FC<SectionProps> = ({
     return (
       <div className={styles.groupedView}>
         <h2>{title}</h2>
-        {groupedItems.map((group) => (
+        {groupedItems.map((group: Group) => (
           <div key={group.title} className={styles.sectionItemGrouped}>
             <h3>{group.title}</h3>
-            {group.items.map((subItem, index) => {
+            {group.items.map((subItem: SectionItem, index: number) => {
               const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
               return (
                 <ul
@@ -92,7 +99,7 @@ const Section: React.FC<SectionProps> = ({
       <div className={styles.pillsView}>
         <h2>{title}</h2>
         <ul>
-          {items.map((item) => (
+          {items.map((item: SectionItem) => (
             <li key={item.title}>
               <Pill
                 text={`${item.title ?? ""}${
@@ -130,7 +137,7 @@ const Section: React.FC<SectionProps> = ({
       >
         <h2>{title}</h2>
         {isExperience && <div className={styles.timelineLine}></div>}
-        {items.map((item, index) => {
+        {items.map((item: SectionItem, index: number) => {
           const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
           const isCurrent = !item.endDate && item.date;
           const IconComponent = isExperience
@@ -160,6 +167,13 @@ const Section: React.FC<SectionProps> = ({
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        track("section_company_link_click", {
+                          section: sectionName,
+                          title: item.title,
+                          link: item.link,
+                        })
+                      }
                     >
                       {item.title}
                     </a>
