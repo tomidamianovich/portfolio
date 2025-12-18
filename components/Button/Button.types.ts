@@ -11,7 +11,7 @@ export enum ButtonSize {
 }
 
 export type ButtonType = {
-  text: string;
+  text?: string;
   onClick?: (e: Event) => void;
   disabled?: boolean;
   active?: boolean;

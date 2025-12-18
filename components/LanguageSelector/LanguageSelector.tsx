@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LanguageSelector.module.css";
 import { LanguageSelectorTypeEnum } from "./LanguageSelector.types";
 import { useTranslation } from "react-i18next";
@@ -7,13 +7,29 @@ import { GrLanguage } from "react-icons/gr";
 
 const LanguageSelector: React.FC = () => {
   const { i18n, t } = useTranslation("common", { useSuspense: false });
+  const [currentLanguage, setCurrentLanguage] = useState<string>("es");
 
   const handleChangeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
+    setCurrentLanguage(lang);
+    localStorage.setItem("language", lang);
   };
 
+  useEffect(() => {
+    const stored =
+      (localStorage.getItem("language") as LanguageSelectorTypeEnum | null) ??
+      null;
+
+    if (stored) {
+      i18n.changeLanguage(stored);
+      setCurrentLanguage(stored);
+    } else {
+      setCurrentLanguage(i18n.language);
+    }
+  }, [i18n]);
+
   return (
-    <nav
+    <div
       className={styles.languageSelector}
       aria-label={t("literals.languageSelectorAriaLabel")}
     >
@@ -25,12 +41,12 @@ const LanguageSelector: React.FC = () => {
             size={ButtonSize.MEDIUM}
             variant={ButtonVariant.SECONDARY}
             key={key}
-            active={i18n.language === language}
+            active={currentLanguage === language}
             onClick={() => handleChangeLanguage(language)}
           />
         ))}
       </div>
-    </nav>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 export enum DarkModeToggleTypeEnum {
-  ES = "es",
-  EN = "en",
-  DE = "de",
+  LIGHT = "light",
+  DARK = "dark",
 }

@@ -39,15 +39,17 @@ const Section: React.FC<SectionProps> = ({
   const groupedItems = useMemo(() => {
     if (!isGrouped) return [];
     const sectionItems: SectionItem[] = items;
-    const grouped = sectionItems.reduce<Record<string, Group>>(
-      (acc: Record<string, Group>, item: SectionItem) => {
-        const key = item.title ?? "";
-        if (!acc[key]) acc[key] = { title: key, items: [] };
-        acc[key].items.push(item);
-        return acc;
-      },
-      {}
-    );
+    const grouped = Array.isArray(sectionItems)
+      ? sectionItems.reduce<Record<string, Group>>(
+          (acc: Record<string, Group>, item: SectionItem) => {
+            const key = item.title ?? "";
+            if (!acc[key]) acc[key] = { title: key, items: [] };
+            acc[key].items.push(item);
+            return acc;
+          },
+          {}
+        )
+      : [];
     return Object.values(grouped).map((group) => ({
       ...group,
       items: group.items.sort(
@@ -96,16 +98,17 @@ const Section: React.FC<SectionProps> = ({
       <div className={styles.pillsView}>
         <h2>{title}</h2>
         <ul>
-          {items.map((item: SectionItem) => (
-            <li key={item.title}>
-              <Pill
-                text={`${item.title ?? ""}${
-                  item.titleDetail ? ` - ${item.titleDetail}` : ""
-                }`}
-                variant={PillVariantEnum.OUTLINED}
-              />
-            </li>
-          ))}
+          {Array.isArray(items) &&
+            items.map((item: SectionItem) => (
+              <li key={item.title}>
+                <Pill
+                  text={`${item.title ?? ""}${
+                    item.titleDetail ? ` - ${item.titleDetail}` : ""
+                  }`}
+                  variant={PillVariantEnum.OUTLINED}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     );
@@ -134,61 +137,62 @@ const Section: React.FC<SectionProps> = ({
       >
         <h2>{title}</h2>
         {isExperience && <div className={styles.timelineLine}></div>}
-        {items.map((item: SectionItem, index: number) => {
-          const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
-          const isCurrent = !item.endDate && item.date;
-          const IconComponent = isExperience
-            ? isCurrent
-              ? MdWork
-              : MdHistory
-            : null;
+        {Array.isArray(items) &&
+          items.map((item: SectionItem, index: number) => {
+            const isVisible = isMoreItemsVisible || index < MAX_ITEMS_DEFAULT;
+            const isCurrent = !item.endDate && item.date;
+            const IconComponent = isExperience
+              ? isCurrent
+                ? MdWork
+                : MdHistory
+              : null;
 
-          return (
-            <div
-              key={item.title}
-              className={`${styles.sectionItem} ${
-                isVisible ? styles.visible : styles.hidden
-              } ${isExperience ? styles.timelineItem : ""} ${
-                isEducation ? styles.gridItem : ""
-              }`}
-            >
-              {isExperience && IconComponent && (
-                <div className={styles.timelineIcon}>
-                  <IconComponent size={16} />
-                </div>
-              )}
-              <article className={styles.sectionItemContent}>
-                <h3>
-                  {item.link ? (
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        track("section_company_link_click", {
-                          section: sectionName,
-                          title: item.title,
-                          link: item.link,
-                        })
-                      }
-                    >
-                      {item.title}
-                    </a>
-                  ) : (
-                    item.title
-                  )}
-                  {item.titleDetail && <span> - {item.titleDetail}</span>}
-                  {item.mode && <span> - {item.mode}</span>}
-                </h3>
-                {item.subtitle && <h4>{item.subtitle}</h4>}
-                {isExperience && dates(item, false)}
-                {!isExperience && dates(item, true)}
-                {item.content && <p>{item.content}</p>}
-              </article>
-              {!isExperience && dates(item, false)}
-            </div>
-          );
-        })}
+            return (
+              <div
+                key={item.title}
+                className={`${styles.sectionItem} ${
+                  isVisible ? styles.visible : styles.hidden
+                } ${isExperience ? styles.timelineItem : ""} ${
+                  isEducation ? styles.gridItem : ""
+                }`}
+              >
+                {isExperience && IconComponent && (
+                  <div className={styles.timelineIcon}>
+                    <IconComponent size={16} />
+                  </div>
+                )}
+                <article className={styles.sectionItemContent}>
+                  <h3>
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          track("section_company_link_click", {
+                            section: sectionName,
+                            title: item.title,
+                            link: item.link,
+                          })
+                        }
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      item.title
+                    )}
+                    {item.titleDetail && <span> - {item.titleDetail}</span>}
+                    {item.mode && <span> - {item.mode}</span>}
+                  </h3>
+                  {item.subtitle && <h4>{item.subtitle}</h4>}
+                  {isExperience && dates(item, false)}
+                  {!isExperience && dates(item, true)}
+                  {item.content && <p>{item.content}</p>}
+                </article>
+                {!isExperience && dates(item, false)}
+              </div>
+            );
+          })}
         {items.length > MAX_ITEMS_DEFAULT && (
           <SeeMoreButton
             isMoreItemsVisible={isMoreItemsVisible}

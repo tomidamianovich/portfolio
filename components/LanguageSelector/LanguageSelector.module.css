@@ -1,19 +1,21 @@
 .languageSelector {
-  width: 100%;
   display: flex;
   gap: var(--space-sm);
   align-items: center;
   justify-content: flex-end;
-  padding: var(--space-md) 0;
-  margin: 0 auto;
-  max-width: min(var(--content-max-width), calc(100% - var(--space-5xl) * 2));
 
   @media (max-width: 480px) {
-    margin: 14px var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    right: 0;
-    top: 0;
+    padding: var(--space-sm) 0;
   }
+}
+
+:root[data-theme="dark"] .languageSelectorButtonsWrapper {
+  background: var(--background-section);
+  color: var(--color-white);
+}
+
+:root[data-theme="dark"] .languageSelectorButtonsWrapper button {
+  color: var(--color-white);
 }
 
 .languageSelectorButtonsWrapper {
@@ -25,4 +27,9 @@
   gap: var(--space-sm);
   row-gap: var(--space-sm);
   margin-left: var(--space-sm);
+
+  @media (max-width: 380px) {
+    padding: 0;
+    margin: 0;
+  }
 }

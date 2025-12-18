@@ -1,28 +1,29 @@
 .darkModeToggle {
-  width: 100%;
   display: flex;
   gap: var(--space-sm);
   align-items: center;
   justify-content: flex-end;
   padding: var(--space-md) 0;
-  margin: 0 auto;
-  max-width: min(var(--content-max-width), calc(100% - var(--space-5xl) * 2));
+}
 
-  @media (max-width: 480px) {
-    margin: 14px var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    right: 0;
-    top: 0;
-  }
+:root[data-theme="dark"] .darkModeToggleButtonsWrapper {
+  background: var(--background-section);
+  color: var(--color-white);
+}
+
+:root[data-theme="dark"] .darkModeToggleButtonsWrapper button {
+  color: var(--color-white);
 }
 
 .darkModeToggleButtonsWrapper {
   background: var(--color-gray-200);
   border-radius: var(--border-radius-xl);
-  padding: var(--space-sm);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
-  row-gap: var(--space-sm);
   margin-left: var(--space-sm);
+
+  @media (max-width: 380px) {
+    padding: 0;
+    margin: 0;
+  }
 }

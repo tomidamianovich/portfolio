@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/Pill";
 import LanguageSelector from "@/components/LanguageSelector";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 import { GrLocationPin } from "react-icons/gr";
 import { FaRegFlag } from "react-icons/fa6";
@@ -12,7 +13,6 @@ import { GoMail } from "react-icons/go";
 
 import styles from "@/styles/Home.module.css";
 import { useTranslation, UseTranslationResponse } from "react-i18next";
-import { useEffect, useState } from "react";
 import Section, {
   LiteralsType,
   type SectionItem,
@@ -37,16 +37,9 @@ type ContactItemType = {
 };
 
 export default function Home() {
-  const { t, ready } = useTranslation("common", {
+  const { t } = useTranslation("common", {
     useSuspense: false,
   }) as UseTranslationResponse<"common", undefined>;
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted || !ready) return null;
 
   const contacts = t("contact", { returnObjects: true }) as ContactItemType[];
   const experience = t("experience.items", {
@@ -78,9 +71,11 @@ export default function Home() {
         <title>{t("seo.title")}</title>
         <meta name="description" content={t("seo.description")} />
       </Head>
-      <div className={styles.languageSelectorWrapper}>
+      <nav className={styles.selectorsWrapper}>
+        <DarkModeToggle />
+        <hr />
         <LanguageSelector />
-      </div>
+      </nav>
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >

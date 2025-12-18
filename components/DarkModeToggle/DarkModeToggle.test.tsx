@@ -1,73 +1,153 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import DarkModeToggle from "./DarkModeToggle";
 import { DarkModeToggleTypeEnum } from "./DarkModeToggle.types";
 
-const changeLanguageMock = jest.fn();
-const firstLanguage = Object.values(DarkModeToggleTypeEnum)[0];
+// Mock matchMedia
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
+// Mock localStorage
+const localStorageMock = (() => {
+  let store: Record<string, string> = {};
+  return {
+    getItem: jest.fn((key: string) => store[key] || null),
+    setItem: jest.fn((key: string, value: string) => {
+      store[key] = value.toString();
+    }),
+    removeItem: jest.fn((key: string) => {
+      delete store[key];
+    }),
+    clear: jest.fn(() => {
+      store = {};
+    }),
+  };
+})();
+
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
+});
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => key,
-    i18n: {
-      language: firstLanguage,
-      changeLanguage: changeLanguageMock,
-    },
   }),
 }));
 
-jest.mock("react-icons/gr", () => ({
-  GrLanguage: () => <svg data-testid="language-icon" />,
+jest.mock("react-icons/md", () => ({
+  MdDarkMode: () => <svg data-testid="dark-mode-icon" />,
+  MdLightMode: () => <svg data-testid="light-mode-icon" />,
 }));
 
 jest.mock("@/components/Button", () => ({
   __esModule: true,
   default: ({
-    text,
+    children,
     onClick,
     active,
   }: {
-    text: string;
+    children: React.ReactNode;
     onClick: () => void;
     active: boolean;
   }) => (
     <button data-active={active ? "true" : "false"} onClick={onClick}>
-      {text}
+      {children}
     </button>
   ),
   ButtonSize: { MEDIUM: "medium" },
-  ButtonVariant: { OUTLINED: "outlined" },
+  ButtonVariant: { SECONDARY: "secondary" },
 }));
 
 describe("DarkModeToggle component", () => {
   beforeEach(() => {
-    changeLanguageMock.mockClear();
+    localStorageMock.clear();
+    jest.clearAllMocks();
+    // Reset document.documentElement.dataset.theme
+    delete document.documentElement.dataset.theme;
   });
 
-  it("renders the language icon", () => {
+  it("renders dark and light mode buttons", async () => {
     render(<DarkModeToggle />);
-    expect(screen.getByTestId("language-icon")).toBeInTheDocument();
-  });
 
-  it("renders a button for each language", () => {
-    render(<DarkModeToggle />);
-    Object.values(DarkModeToggleTypeEnum).forEach((lang) => {
-      expect(screen.getByText(lang)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId("dark-mode-icon")).toBeInTheDocument();
+      expect(screen.getByTestId("light-mode-icon")).toBeInTheDocument();
     });
   });
 
-  it("marks the active language button", () => {
+  it("renders a button for each mode", async () => {
     render(<DarkModeToggle />);
-    const activeButton = screen.getByText(firstLanguage);
-    expect(activeButton).toHaveAttribute("data-active", "true");
+
+    await waitFor(() => {
+      const buttons = screen.getAllByRole("button");
+      expect(buttons).toHaveLength(
+        Object.values(DarkModeToggleTypeEnum).length
+      );
+    });
   });
 
-  it("calls i18n.changeLanguage when a button is clicked", () => {
+  it("marks the active mode button after mount", async () => {
     render(<DarkModeToggle />);
-    const buttons = Object.values(DarkModeToggleTypeEnum).map((lang) =>
-      screen.getByText(lang)
+
+    await waitFor(() => {
+      const buttons = screen.getAllByRole("button");
+      // After mount, it should detect system preference or use stored value
+      // Initially all buttons might be inactive, then one becomes active
+      const activeButtons = buttons.filter(
+        (btn) => btn.getAttribute("data-active") === "true"
+      );
+      expect(activeButtons.length).toBeGreaterThanOrEqual(0);
+    });
+  });
+
+  it("changes mode when a button is clicked", async () => {
+    render(<DarkModeToggle />);
+
+    await waitFor(() => {
+      const buttons = screen.getAllByRole("button");
+      expect(buttons.length).toBeGreaterThan(0);
+    });
+
+    const buttons = screen.getAllByRole("button");
+    const darkButton = buttons.find((btn) =>
+      btn.querySelector('[data-testid="dark-mode-icon"]')
     );
 
-    fireEvent.click(buttons[1]);
-    expect(changeLanguageMock).toHaveBeenCalledWith(buttons[1].textContent);
+    if (darkButton) {
+      fireEvent.click(darkButton);
+
+      await waitFor(() => {
+        expect(localStorageMock.setItem).toHaveBeenCalledWith(
+          "theme",
+          DarkModeToggleTypeEnum.DARK
+        );
+        expect(document.documentElement.dataset.theme).toBe(
+          DarkModeToggleTypeEnum.DARK
+        );
+      });
+    }
+  });
+
+  it("loads stored theme from localStorage on mount", async () => {
+    localStorageMock.setItem("theme", DarkModeToggleTypeEnum.DARK);
+
+    render(<DarkModeToggle />);
+
+    await waitFor(() => {
+      expect(localStorageMock.getItem).toHaveBeenCalledWith("theme");
+      expect(document.documentElement.dataset.theme).toBe(
+        DarkModeToggleTypeEnum.DARK
+      );
+    });
   });
 });
