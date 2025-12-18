@@ -9,7 +9,10 @@
     "of": "de",
     "seeMore": "Ver más",
     "seeLess": "Ver menos",
-    "languageSelectorAriaLabel": "Selector de idioma"
+    "languageSelectorAriaLabel": "Selector de idioma",
+    "darkModeToggleAriaLabel": "Selector de modo oscuro",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro"
   },
   "seo": {
     "title": "Portfolio de Tomás Damianovich - Senior Frontend Engineer",

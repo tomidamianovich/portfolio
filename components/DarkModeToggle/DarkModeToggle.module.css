@@ -27,3 +27,15 @@
     margin: 0;
   }
 }
+
+.darkModeToggleButtonsWrapper button {
+  transform: none !important;
+}
+
+.darkModeToggleButtonsWrapper button:first-child {
+  border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+}
+
+.darkModeToggleButtonsWrapper button:last-child {
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}

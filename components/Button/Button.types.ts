@@ -18,4 +18,5 @@ export type ButtonType = {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children?: React.ReactNode;
+  ariaLabel?: string;
 };

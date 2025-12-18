@@ -68,11 +68,16 @@ const DarkModeToggle: React.FC = () => {
             key={key}
             active={modeSelected === mode}
             onClick={() => handleChangeDarkMode(mode)}
+            ariaLabel={
+              mode === DarkModeToggleTypeEnum.DARK
+                ? t("literals.darkMode")
+                : t("literals.lightMode")
+            }
           >
             {mode === DarkModeToggleTypeEnum.DARK ? (
-              <MdDarkMode size={18} />
+              <MdDarkMode size={18} aria-hidden="true" />
             ) : (
-              <MdLightMode size={18} />
+              <MdLightMode size={18} aria-hidden="true" />
             )}
           </Button>
         ))}

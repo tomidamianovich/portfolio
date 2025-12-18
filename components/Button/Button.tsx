@@ -10,6 +10,7 @@ const Button: React.FC<ButtonType> = ({
   variant = ButtonVariant.PRIMARY,
   size = ButtonSize.MEDIUM,
   children,
+  ariaLabel,
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -30,6 +31,9 @@ const Button: React.FC<ButtonType> = ({
       ? styles.large
       : styles.medium;
 
+  // Use ariaLabel if provided, otherwise use text, or generate from children
+  const accessibleName = ariaLabel || text || (children ? undefined : "Button");
+
   return (
     <button
       className={`${styles.button} ${variantClass} ${sizeClass}`}
@@ -38,6 +42,7 @@ const Button: React.FC<ButtonType> = ({
       aria-pressed={active}
       aria-disabled={disabled}
       disabled={disabled}
+      aria-label={accessibleName}
     >
       {children}
       {text}

@@ -1,6 +1,6 @@
 .page {
   font-family: var(--font-geist-sans);
-  margin: var(--space-4xl) auto;
+  margin: var(--space-3xl) auto var(--space-4xl);
   max-width: min(var(--content-max-width), calc(100% - var(--space-5xl) * 2));
 
   transition: box-shadow 0.3s ease;
