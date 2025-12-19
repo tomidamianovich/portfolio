@@ -19,7 +19,7 @@ jest.mock("react-icons/gr", () => ({
   GrLanguage: () => <svg data-testid="language-icon" />,
 }));
 
-jest.mock("@/components/Button", () => ({
+jest.mock("@/components/base/Button", () => ({
   __esModule: true,
   default: ({
     text,

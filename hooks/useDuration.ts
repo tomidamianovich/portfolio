@@ -1,4 +1,4 @@
-import { type LiteralsType } from "@/components/Section";
+import { type LiteralsType } from "@/components/structures/Section";
 
 export function useDuration(literals: LiteralsType) {
   const calculate = (start: string | Date, end?: string | Date) => {

@@ -7,24 +7,13 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FiGithub } from "react-icons/fi";
 
-const getLanguageColor = (text: string): string => {
-  const lowerText = text.toLowerCase();
-  if (lowerText.includes("español") || lowerText.includes("spanish")) {
-    return "#10b981";
-  } else if (lowerText.includes("inglés") || lowerText.includes("english")) {
-    return "#3b82f6";
-  } else if (lowerText.includes("alemán") || lowerText.includes("german")) {
-    return "#eab308";
-  }
-  return "var(--color-gray-400)";
-};
-
 const Pill: React.FC<PillType> = ({
   text,
   href,
   variant = PillVariantEnum.PRIMARY,
   size = PillSizeEnum.MEDIUM,
   icon,
+  index,
 }) => {
   const variantClass =
     variant === PillVariantEnum.OUTLINED ? styles.outlined : styles.primary;
@@ -54,8 +43,6 @@ const Pill: React.FC<PillType> = ({
     }
   };
 
-  const dotColor = getLanguageColor(text || "");
-
   if (href) {
     return (
       <a
@@ -72,12 +59,7 @@ const Pill: React.FC<PillType> = ({
 
   return (
     <span className={classNames}>
-      {
-        <span
-          className={styles.languageDot}
-          style={{ backgroundColor: dotColor }}
-        />
-      }
+      {<span className={styles.languageDot} data-index={index} />}
       {!!text && <span>{text}</span>}
     </span>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./LanguageSelector.module.css";
 import { LanguageSelectorTypeEnum } from "./LanguageSelector.types";
 import { useTranslation } from "react-i18next";
-import Button, { ButtonSize, ButtonVariant } from "@/components/Button";
+import Button, { ButtonSize, ButtonVariant } from "@/components/base/Button";
 import { GrLanguage } from "react-icons/gr";
 
 const LanguageSelector: React.FC = () => {

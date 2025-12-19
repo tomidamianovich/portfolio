@@ -49,7 +49,7 @@ jest.mock("react-icons/md", () => ({
   MdLightMode: () => <svg data-testid="light-mode-icon" />,
 }));
 
-jest.mock("@/components/Button", () => ({
+jest.mock("@/components/base/Button", () => ({
   __esModule: true,
   default: ({
     children,
@@ -101,8 +101,6 @@ describe("DarkModeToggle component", () => {
 
     await waitFor(() => {
       const buttons = screen.getAllByRole("button");
-      // After mount, it should detect system preference or use stored value
-      // Initially all buttons might be inactive, then one becomes active
       const activeButtons = buttons.filter(
         (btn) => btn.getAttribute("data-active") === "true"
       );

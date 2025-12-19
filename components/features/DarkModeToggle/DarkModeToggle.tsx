@@ -4,16 +4,14 @@ import { DarkModeToggleTypeEnum } from "./DarkModeToggle.types";
 import { useTranslation } from "react-i18next";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
-import Button, { ButtonSize, ButtonVariant } from "@/components/Button";
+import Button, { ButtonSize, ButtonVariant } from "@/components/base/Button";
 
 const DarkModeToggle: React.FC = () => {
-  // Always start with LIGHT to ensure SSR/client hydration match
   const [modeSelected, setModeSelected] = useState<DarkModeToggleTypeEnum>(
     DarkModeToggleTypeEnum.LIGHT
   );
   const [mounted, setMounted] = useState(false);
 
-  // After mount, read the actual theme from localStorage or system preference
   useEffect(() => {
     setMounted(true);
 
@@ -45,7 +43,6 @@ const DarkModeToggle: React.FC = () => {
     }
   };
 
-  // Update theme when modeSelected changes (but only after mount)
   useEffect(() => {
     if (mounted) {
       document.documentElement.dataset.theme = modeSelected;

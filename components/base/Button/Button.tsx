@@ -31,7 +31,6 @@ const Button: React.FC<ButtonType> = ({
       ? styles.large
       : styles.medium;
 
-  // Use ariaLabel if provided, otherwise use text, or generate from children
   const accessibleName = ariaLabel || text || (children ? undefined : "Button");
 
   return (

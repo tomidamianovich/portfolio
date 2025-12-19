@@ -6,9 +6,9 @@ import {
   type SectionProps,
   type SectionItem,
 } from "./Section.types";
-import Pill, { PillVariantEnum } from "../Pill";
+import Pill, { PillVariantEnum } from "../../base/Pill";
 import { MAX_ITEMS_DEFAULT } from "./Section.constant";
-import SeeMoreButton from "@/components/SeeMoreButton";
+import SeeMoreButton from "@/components/features/SeeMoreButton";
 import { MdWork, MdHistory } from "react-icons/md";
 import { track } from "@vercel/analytics";
 
@@ -99,9 +99,10 @@ const Section: React.FC<SectionProps> = ({
         <h2>{title}</h2>
         <ul>
           {Array.isArray(items) &&
-            items.map((item: SectionItem) => (
+            items.map((item: SectionItem, index: number) => (
               <li key={item.title}>
                 <Pill
+                  index={index}
                   text={`${item.title ?? ""}${
                     item.titleDetail ? ` - ${item.titleDetail}` : ""
                   }`}

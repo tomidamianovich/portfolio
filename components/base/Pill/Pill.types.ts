@@ -17,6 +17,7 @@ export enum IconTypeEnum {
 }
 
 export type PillType = {
+  index?: number;
   text?: string;
   href?: string;
   variant?: PillVariantEnum;

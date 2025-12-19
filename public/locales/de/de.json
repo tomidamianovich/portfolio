@@ -12,7 +12,8 @@
     "languageSelectorAriaLabel": "Sprachauswahl",
     "darkModeToggleAriaLabel": "Dunkelmodus-Auswahl",
     "darkMode": "Dunkelmodus",
-    "lightMode": "Hellmodus"
+    "lightMode": "Hellmodus",
+    "profileImageAlt": "Profilbild von Tomás Damianovich Reddy"
   },
   "seo": {
     "title": "Portfolio von Tomás Damianovich - Senior Frontend Engineer",

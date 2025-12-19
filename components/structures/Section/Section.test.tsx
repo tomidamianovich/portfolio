@@ -25,7 +25,7 @@ jest.mock("@/hooks/useDuration", () => ({
   }),
 }));
 
-jest.mock("../Pill", () => ({
+jest.mock("@/components/base/Pill", () => ({
   __esModule: true,
   default: ({ text }: { text: string }) => <div>{text}</div>,
   PillVariantEnum: { OUTLINED: "outlined" },

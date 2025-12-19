@@ -1,13 +1,14 @@
 import "@/i18n";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { Geist, Geist_Mono } from "next/font/google";
-import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/Pill";
+import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/base/Pill";
 import LanguageSelector, {
   LanguageSelectorTypeEnum,
-} from "@/components/LanguageSelector";
-import DarkModeToggle from "@/components/DarkModeToggle";
+} from "@/components/features/LanguageSelector";
+import DarkModeToggle from "@/components/features/DarkModeToggle";
 
 import { GrLocationPin } from "react-icons/gr";
 import { FaRegFlag } from "react-icons/fa6";
@@ -19,9 +20,12 @@ import Section, {
   LiteralsType,
   type SectionItem,
   SectionTypeEnum,
-} from "@/components/Section";
-import GoToTop from "@/components/GoToTop";
+} from "@/components/structures/Section";
 import { GoMail } from "react-icons/go";
+
+const GoToTop = dynamic(() => import("@/components/features/GoToTop"), {
+  ssr: false,
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,96 +55,136 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+    // Reduced delay for better UX - still protects against basic scraping
     const timer = setTimeout(() => {
       const emailText = t("email");
       const phoneText = t("phone");
       setEmail(emailText);
       setPhone(phoneText);
-    }, 150);
+    }, 50);
     return () => clearTimeout(timer);
   }, [t]);
 
-  const contacts = t("contact", { returnObjects: true }) as ContactItemType[];
-  const experience = t("experience.items", {
-    returnObjects: true,
-  }) as SectionItem[];
-  const education = t("education.items", {
-    returnObjects: true,
-  }) as SectionItem[];
-  const languages = t("languages.items", {
-    returnObjects: true,
-  }) as SectionItem[];
-  const certifications = t("certifications.items", {
-    returnObjects: true,
-  }) as SectionItem[];
-  const literals = t("literals", {
-    returnObjects: true,
-  }) as LiteralsType;
+  // Memoize translations to avoid recalculating on every render
+  const contacts = useMemo(
+    () => t("contact", { returnObjects: true }) as ContactItemType[],
+    [t]
+  );
+  const experience = useMemo(
+    () =>
+      t("experience.items", {
+        returnObjects: true,
+      }) as SectionItem[],
+    [t]
+  );
+  const education = useMemo(
+    () =>
+      t("education.items", {
+        returnObjects: true,
+      }) as SectionItem[],
+    [t]
+  );
+  const languages = useMemo(
+    () =>
+      t("languages.items", {
+        returnObjects: true,
+      }) as SectionItem[],
+    [t]
+  );
+  const certifications = useMemo(
+    () =>
+      t("certifications.items", {
+        returnObjects: true,
+      }) as SectionItem[],
+    [t]
+  );
+  const literals = useMemo(
+    () =>
+      t("literals", {
+        returnObjects: true,
+      }) as LiteralsType,
+    [t]
+  );
 
-  const sectionItems: Record<SectionTypeEnum, SectionItem[]> = {
-    [SectionTypeEnum.EXPERIENCE]: experience,
-    [SectionTypeEnum.EDUCATION]: education,
-    [SectionTypeEnum.LANGUAGES]: languages,
-    [SectionTypeEnum.CERTIFICATIONS]: certifications,
-  };
+  const sectionItems: Record<SectionTypeEnum, SectionItem[]> = useMemo(
+    () => ({
+      [SectionTypeEnum.EXPERIENCE]: experience,
+      [SectionTypeEnum.EDUCATION]: education,
+      [SectionTypeEnum.LANGUAGES]: languages,
+      [SectionTypeEnum.CERTIFICATIONS]: certifications,
+    }),
+    [experience, education, languages, certifications]
+  );
 
-  const currentExperience =
-    Array.isArray(experience) && experience.length > 0 ? experience[0] : null;
-  const educationItem =
-    Array.isArray(education) && education.length > 0 ? education[0] : null;
+  const currentExperience = useMemo(
+    () =>
+      Array.isArray(experience) && experience.length > 0 ? experience[0] : null,
+    [experience]
+  );
+  const educationItem = useMemo(
+    () =>
+      Array.isArray(education) && education.length > 0 ? education[0] : null,
+    [education]
+  );
 
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: t("name"),
-    jobTitle: t("position"),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Madrid",
-      addressRegion: "Madrid",
-      addressCountry: "ES",
-    },
-    image:
-      typeof window !== "undefined"
-        ? `${window.location.origin}/profile-pic.png`
-        : "https://portfolio-coral-pi-29.vercel.app/profile-pic.png",
-    url:
+  // Memoize schema to avoid recalculating on every render
+  const personSchema = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: t("name"),
+      jobTitle: t("position"),
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Madrid",
+        addressRegion: "Madrid",
+        addressCountry: "ES",
+      },
+      image:
+        typeof window !== "undefined"
+          ? `${window.location.origin}/profile-pic.png`
+          : "https://portfolio-coral-pi-29.vercel.app/profile-pic.png",
+      url:
+        typeof window !== "undefined"
+          ? window.location.origin
+          : "https://portfolio-coral-pi-29.vercel.app",
+      sameAs: Array.isArray(contacts)
+        ? contacts.map((contact) => contact.url)
+        : [],
+      knowsLanguage: Array.isArray(languages)
+        ? languages.map((lang) => ({
+            "@type": "Language",
+            name: lang.title,
+          }))
+        : [],
+      ...(educationItem && {
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: educationItem.title,
+          url: educationItem.link || undefined,
+        },
+      }),
+      ...(currentExperience && {
+        worksFor: {
+          "@type": "Organization",
+          name: currentExperience.title,
+          url: currentExperience.link || undefined,
+        },
+      }),
+    }),
+    [t, contacts, languages, educationItem, currentExperience]
+  );
+
+  // Memoize URLs to avoid recalculating
+  const siteUrl = useMemo(
+    () =>
       typeof window !== "undefined"
         ? window.location.origin
         : "https://portfolio-coral-pi-29.vercel.app",
-    sameAs: Array.isArray(contacts)
-      ? contacts.map((contact) => contact.url)
-      : [],
-    knowsLanguage: Array.isArray(languages)
-      ? languages.map((lang) => ({
-          "@type": "Language",
-          name: lang.title,
-        }))
-      : [],
-    ...(educationItem && {
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: educationItem.title,
-        url: educationItem.link || undefined,
-      },
-    }),
-    ...(currentExperience && {
-      worksFor: {
-        "@type": "Organization",
-        name: currentExperience.title,
-        url: currentExperience.link || undefined,
-      },
-    }),
-  };
-
-  const siteUrl =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : "https://portfolio-coral-pi-29.vercel.app";
-  const imageUrl = `${siteUrl}/profile-pic.png`;
-
+    []
+  );
+  const imageUrl = useMemo(() => `${siteUrl}/profile-pic.png`, [siteUrl]);
   const canonicalUrl = siteUrl;
-
   const supportedLangs = Object.values(LanguageSelectorTypeEnum);
 
   useEffect(() => {
@@ -172,10 +216,7 @@ export default function Home() {
         <meta property="og:image" content={imageUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta
-          property="og:image:alt"
-          content="Foto de perfil de Tomás Damianovich Reddy"
-        />
+        <meta property="og:image:alt" content={t("literals.profileImageAlt")} />
         <meta property="og:site_name" content={t("name")} />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:locale:alternate" content="en_US" />
@@ -187,7 +228,7 @@ export default function Home() {
         <meta name="twitter:image" content={imageUrl} />
         <meta
           name="twitter:image:alt"
-          content="Foto de perfil de Tomás Damianovich Reddy"
+          content={t("literals.profileImageAlt")}
         />
         <meta name="author" content={t("name")} />
         <link rel="canonical" href={canonicalUrl} />
@@ -211,10 +252,12 @@ export default function Home() {
           <div className={styles.imageWrapper}>
             <Image
               src="/profile-pic.png"
-              alt="Foto de perfil de Tomás Damianovich Reddy"
+              alt={t("literals.profileImageAlt")}
               width={152}
               height={152}
               quality={100}
+              priority
+              loading="eager"
             />
           </div>
           <div className={styles.baseInfo}>
