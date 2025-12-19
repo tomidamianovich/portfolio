@@ -1,15 +1,17 @@
 import "@/i18n";
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/Pill";
-import LanguageSelector from "@/components/LanguageSelector";
+import LanguageSelector, {
+  LanguageSelectorTypeEnum,
+} from "@/components/LanguageSelector";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
 import { GrLocationPin } from "react-icons/gr";
 import { FaRegFlag } from "react-icons/fa6";
 import { FiPhone } from "react-icons/fi";
-import { GoMail } from "react-icons/go";
 
 import styles from "@/styles/Home.module.css";
 import { useTranslation, UseTranslationResponse } from "react-i18next";
@@ -19,6 +21,7 @@ import Section, {
   SectionTypeEnum,
 } from "@/components/Section";
 import GoToTop from "@/components/GoToTop";
+import { GoMail } from "react-icons/go";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +40,25 @@ type ContactItemType = {
 };
 
 export default function Home() {
-  const { t } = useTranslation("common", {
+  const { t, i18n } = useTranslation("common", {
     useSuspense: false,
   }) as UseTranslationResponse<"common", undefined>;
+
+  const currentLang = i18n.language || "es";
+  const [mounted, setMounted] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+
+  useEffect(() => {
+    setMounted(true);
+    const timer = setTimeout(() => {
+      const emailText = t("email");
+      const phoneText = t("phone");
+      setEmail(emailText);
+      setPhone(phoneText);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [t]);
 
   const contacts = t("contact", { returnObjects: true }) as ContactItemType[];
   const experience = t("experience.items", {
@@ -65,11 +84,120 @@ export default function Home() {
     [SectionTypeEnum.CERTIFICATIONS]: certifications,
   };
 
+  const currentExperience =
+    Array.isArray(experience) && experience.length > 0 ? experience[0] : null;
+  const educationItem =
+    Array.isArray(education) && education.length > 0 ? education[0] : null;
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: t("name"),
+    jobTitle: t("position"),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Madrid",
+      addressRegion: "Madrid",
+      addressCountry: "ES",
+    },
+    image:
+      typeof window !== "undefined"
+        ? `${window.location.origin}/profile-pic.png`
+        : "https://portfolio-coral-pi-29.vercel.app/profile-pic.png",
+    url:
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "https://portfolio-coral-pi-29.vercel.app",
+    sameAs: Array.isArray(contacts)
+      ? contacts.map((contact) => contact.url)
+      : [],
+    knowsLanguage: Array.isArray(languages)
+      ? languages.map((lang) => ({
+          "@type": "Language",
+          name: lang.title,
+        }))
+      : [],
+    ...(educationItem && {
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: educationItem.title,
+        url: educationItem.link || undefined,
+      },
+    }),
+    ...(currentExperience && {
+      worksFor: {
+        "@type": "Organization",
+        name: currentExperience.title,
+        url: currentExperience.link || undefined,
+      },
+    }),
+  };
+
+  const siteUrl =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://portfolio-coral-pi-29.vercel.app";
+  const imageUrl = `${siteUrl}/profile-pic.png`;
+
+  const canonicalUrl = siteUrl;
+
+  const supportedLangs = Object.values(LanguageSelectorTypeEnum);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = currentLang;
+    }
+  }, [currentLang]);
+
   return (
     <>
       <Head>
         <title>{t("seo.title")}</title>
         <meta name="description" content={t("seo.description")} />
+
+        {supportedLangs.map((lang) => (
+          <link
+            key={lang}
+            rel="alternate"
+            hrefLang={lang}
+            href={canonicalUrl}
+          />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={t("seo.title")} />
+        <meta property="og:description" content={t("seo.description")} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content="Foto de perfil de Tomás Damianovich Reddy"
+        />
+        <meta property="og:site_name" content={t("name")} />
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:locale:alternate" content="de_DE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={t("seo.title")} />
+        <meta name="twitter:description" content={t("seo.description")} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta
+          name="twitter:image:alt"
+          content="Foto de perfil de Tomás Damianovich Reddy"
+        />
+        <meta name="author" content={t("name")} />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
       </Head>
       <nav className={styles.selectorsWrapper}>
         <DarkModeToggle />
@@ -100,14 +228,18 @@ export default function Home() {
               <FaRegFlag size={16} aria-hidden />
               <span>{t("nationality")}</span>
             </p>
-            <p className={styles.phone}>
-              <FiPhone size={16} aria-hidden />
-              <a href="tel:+34667094477">{t("phone")}</a>
-            </p>
-            <p className={styles.email}>
-              <GoMail size={16} aria-hidden />
-              <a href={`mailto:${t("email")}`}>{t("email")}</a>
-            </p>
+            {mounted && phone && (
+              <p className={styles.phone}>
+                <FiPhone size={16} aria-hidden />
+                <a href={`tel:${phone.replace(/[\s()\-]/g, "")}`}>{phone}</a>
+              </p>
+            )}
+            {mounted && email && (
+              <p className={styles.email}>
+                <GoMail size={16} aria-hidden />
+                <a href={`mailto:${email}`}>{email}</a>
+              </p>
+            )}
           </div>
           <div className={styles.headerPillsWrapper}>
             {Array.isArray(contacts) &&
