@@ -1,5 +1,8 @@
 {
-  "buildCommand": "pnpm build",
-  "outputDirectory": ".next",
-  "installCommand": "pnpm install"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm run build-storybook",
+  "devCommand": "pnpm run storybook",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "outputDirectory": "./storybook-static"
 }
