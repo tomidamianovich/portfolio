@@ -8,5 +8,7 @@
       "source": "/storybook",
       "destination": "/storybook-static/index.html"
     }
-  ]
+  ],
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".next"
 }

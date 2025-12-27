@@ -37,11 +37,27 @@ export const DesignTokens: Story = {
         minHeight: "100vh",
       }}
     >
-      <h1 style={{ marginBottom: "2rem", fontSize: "2rem" }}>Design Tokens</h1>
+      <h1
+        style={{
+          marginBottom: "2rem",
+          fontSize: "2rem",
+          color: "var(--foreground)",
+        }}
+      >
+        Design Tokens
+      </h1>
 
       {/* Colors */}
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>Colors</h2>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
+          Colors
+        </h2>
         <div
           style={{
             display: "grid",
@@ -83,13 +99,20 @@ export const DesignTokens: Story = {
                 }}
               />
               <div style={{ padding: "0.75rem" }}>
-                <div style={{ fontWeight: "bold", marginBottom: "0.25rem" }}>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    marginBottom: "0.25rem",
+                    color: "var(--foreground)",
+                  }}
+                >
                   {color.name}
                 </div>
                 <div
                   style={{
                     fontSize: "0.75rem",
-                    color: "var(--color-gray-600)",
+                    color: "var(--foreground)",
+                    opacity: 0.7,
                     fontFamily: "monospace",
                   }}
                 >
@@ -103,7 +126,13 @@ export const DesignTokens: Story = {
 
       {/* Typography */}
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
           Typography
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -127,13 +156,20 @@ export const DesignTokens: Story = {
                 borderRadius: "8px",
               }}
             >
-              <div style={{ fontSize: size.var, marginBottom: "0.5rem" }}>
+              <div
+                style={{
+                  fontSize: size.var,
+                  marginBottom: "0.5rem",
+                  color: "var(--foreground)",
+                }}
+              >
                 The quick brown fox jumps over the lazy dog
               </div>
               <div
                 style={{
                   fontSize: "0.75rem",
-                  color: "var(--color-gray-600)",
+                  color: "var(--foreground)",
+                  opacity: 0.7,
                   fontFamily: "monospace",
                 }}
               >
@@ -146,7 +182,15 @@ export const DesignTokens: Story = {
 
       {/* Spacing */}
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>Spacing</h2>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
+          Spacing
+        </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           {[
             { name: "XXS", var: "var(--space-xxs)" },
@@ -181,11 +225,14 @@ export const DesignTokens: Story = {
                 }}
               />
               <div>
-                <div style={{ fontWeight: "bold" }}>{space.name}</div>
+                <div style={{ fontWeight: "bold", color: "var(--foreground)" }}>
+                  {space.name}
+                </div>
                 <div
                   style={{
                     fontSize: "0.75rem",
-                    color: "var(--color-gray-600)",
+                    color: "var(--foreground)",
+                    opacity: 0.7,
                     fontFamily: "monospace",
                   }}
                 >
@@ -218,16 +265,32 @@ export const BaseComponents: Story = {
         minHeight: "100vh",
       }}
     >
-      <h1 style={{ marginBottom: "2rem", fontSize: "2rem" }}>
+      <h1
+        style={{
+          marginBottom: "2rem",
+          fontSize: "2rem",
+          color: "var(--foreground)",
+        }}
+      >
         Base Components
       </h1>
 
       {/* Buttons */}
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>Buttons</h2>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
+          Buttons
+        </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Variants</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Variants
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -242,7 +305,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Sizes</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Sizes
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -257,7 +322,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>States</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              States
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -272,7 +339,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>With Icons</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              With Icons
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -294,10 +363,20 @@ export const BaseComponents: Story = {
 
       {/* Pills */}
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>Pills</h2>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
+          Pills
+        </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Variants</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Variants
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -311,7 +390,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Sizes</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Sizes
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -326,7 +407,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>With Icons and Links</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              With Icons and Links
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -353,7 +436,9 @@ export const BaseComponents: Story = {
             </div>
           </div>
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Language Pills</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Language Pills
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -391,7 +476,13 @@ export const FeatureComponents: Story = {
         minHeight: "100vh",
       }}
     >
-      <h1 style={{ marginBottom: "2rem", fontSize: "2rem" }}>
+      <h1
+        style={{
+          marginBottom: "2rem",
+          fontSize: "2rem",
+          color: "var(--foreground)",
+        }}
+      >
         Feature Components
       </h1>
 
@@ -405,10 +496,22 @@ export const FeatureComponents: Story = {
         }}
       >
         <section>
-          <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>
+          <h2
+            style={{
+              marginBottom: "1rem",
+              fontSize: "1.5rem",
+              color: "var(--foreground)",
+            }}
+          >
             Dark Mode Toggle
           </h2>
-          <p style={{ marginBottom: "1rem", color: "var(--color-gray-600)" }}>
+          <p
+            style={{
+              marginBottom: "1rem",
+              color: "var(--foreground)",
+              opacity: 0.8,
+            }}
+          >
             Component to toggle between light and dark mode.
           </p>
           <div
@@ -423,10 +526,22 @@ export const FeatureComponents: Story = {
         </section>
 
         <section>
-          <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>
+          <h2
+            style={{
+              marginBottom: "1rem",
+              fontSize: "1.5rem",
+              color: "var(--foreground)",
+            }}
+          >
             Language Selector
           </h2>
-          <p style={{ marginBottom: "1rem", color: "var(--color-gray-600)" }}>
+          <p
+            style={{
+              marginBottom: "1rem",
+              color: "var(--foreground)",
+              opacity: 0.8,
+            }}
+          >
             Language selector to switch between Spanish, English, and German.
           </p>
           <div
@@ -441,10 +556,22 @@ export const FeatureComponents: Story = {
         </section>
 
         <section>
-          <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>
+          <h2
+            style={{
+              marginBottom: "1rem",
+              fontSize: "1.5rem",
+              color: "var(--foreground)",
+            }}
+          >
             See More Button
           </h2>
-          <p style={{ marginBottom: "1rem", color: "var(--color-gray-600)" }}>
+          <p
+            style={{
+              marginBottom: "1rem",
+              color: "var(--foreground)",
+              opacity: 0.8,
+            }}
+          >
             Button to expand/collapse additional content.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
@@ -479,13 +606,33 @@ export const StructureComponents: Story = {
         minHeight: "100vh",
       }}
     >
-      <h1 style={{ marginBottom: "2rem", fontSize: "2rem" }}>
+      <h1
+        style={{
+          marginBottom: "2rem",
+          fontSize: "2rem",
+          color: "var(--foreground)",
+        }}
+      >
         Structure Components
       </h1>
 
       <section style={{ marginBottom: "3rem", width: "100%" }}>
-        <h2 style={{ marginBottom: "1.5rem", fontSize: "1.5rem" }}>Section</h2>
-        <p style={{ marginBottom: "1.5rem", color: "var(--color-gray-600)" }}>
+        <h2
+          style={{
+            marginBottom: "1.5rem",
+            fontSize: "1.5rem",
+            color: "var(--foreground)",
+          }}
+        >
+          Section
+        </h2>
+        <p
+          style={{
+            marginBottom: "1.5rem",
+            color: "var(--foreground)",
+            opacity: 0.8,
+          }}
+        >
           Section component with multiple views: default, grouped, and pills.
         </p>
 
@@ -499,7 +646,9 @@ export const StructureComponents: Story = {
           }}
         >
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Default View</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Default View
+            </h3>
             <Section
               title="Experience"
               sectionName={SectionTypeEnum.EXPERIENCE}
@@ -527,7 +676,9 @@ export const StructureComponents: Story = {
           </div>
 
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Grouped View</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Grouped View
+            </h3>
             <Section
               title="Certifications"
               sectionName={SectionTypeEnum.CERTIFICATIONS}
@@ -558,7 +709,9 @@ export const StructureComponents: Story = {
           </div>
 
           <div>
-            <h3 style={{ marginBottom: "1rem" }}>Pills View</h3>
+            <h3 style={{ marginBottom: "1rem", color: "var(--foreground)" }}>
+              Pills View
+            </h3>
             <Section
               title="Languages"
               sectionName={SectionTypeEnum.LANGUAGES}

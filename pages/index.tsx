@@ -14,7 +14,7 @@ import { GrLocationPin } from "react-icons/gr";
 import { FaRegFlag } from "react-icons/fa6";
 import { FiPhone } from "react-icons/fi";
 
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/App.module.css";
 import { useTranslation, UseTranslationResponse } from "react-i18next";
 import Section, {
   LiteralsType,
