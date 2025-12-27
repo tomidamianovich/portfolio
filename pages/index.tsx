@@ -141,6 +141,16 @@ export default function Home() {
     [education]
   );
 
+  // Memoize URLs to avoid recalculating
+  const siteUrl = useMemo(
+    () =>
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "https://www.tomasdamianovich.dev",
+    []
+  );
+  const imageUrl = useMemo(() => `${siteUrl}/profile-pic.png`, [siteUrl]);
+
   // Memoize schema to avoid recalculating on every render
   const personSchema = useMemo(
     () => ({
@@ -154,14 +164,8 @@ export default function Home() {
         addressRegion: "Madrid",
         addressCountry: "ES",
       },
-      image:
-        typeof window !== "undefined"
-          ? `${window.location.origin}/profile-pic.png`
-          : "https://portfolio-coral-pi-29.vercel.app/profile-pic.png",
-      url:
-        typeof window !== "undefined"
-          ? window.location.origin
-          : "https://portfolio-coral-pi-29.vercel.app",
+      image: imageUrl,
+      url: siteUrl,
       sameAs: Array.isArray(contacts)
         ? contacts.map((contact) => contact.url)
         : [],
@@ -186,18 +190,16 @@ export default function Home() {
         },
       }),
     }),
-    [t, contacts, languages, educationItem, currentExperience]
+    [
+      t,
+      contacts,
+      languages,
+      educationItem,
+      currentExperience,
+      siteUrl,
+      imageUrl,
+    ]
   );
-
-  // Memoize URLs to avoid recalculating
-  const siteUrl = useMemo(
-    () =>
-      typeof window !== "undefined"
-        ? window.location.origin
-        : "https://portfolio-coral-pi-29.vercel.app",
-    []
-  );
-  const imageUrl = useMemo(() => `${siteUrl}/profile-pic.png`, [siteUrl]);
   const canonicalUrl = siteUrl;
   const supportedLangs = Object.values(LanguageSelectorTypeEnum);
 
