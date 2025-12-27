@@ -4,7 +4,7 @@ This project is a personal portfolio built with **Next.js 15**, **React 19**, mo
 
 ### URL
 
-https://portfolio-coral-pi-29.vercel.app/
+https://www.tomasdamianovich.dev/
 
 ---
 

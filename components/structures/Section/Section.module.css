@@ -9,6 +9,10 @@
   padding: var(--space-xl);
 }
 
+.defaultView > button {
+  align-self: center;
+}
+
 :root[data-theme="dark"] .defaultView {
   background: var(--background-section);
 }

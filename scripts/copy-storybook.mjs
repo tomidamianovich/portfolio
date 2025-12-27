@@ -1,4 +1,4 @@
-import { cpSync, rmSync, existsSync, mkdirSync } from 'fs';
+import { cpSync, rmSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -23,8 +23,17 @@ if (!existsSync(publicDir)) {
 if (existsSync(sourceDir)) {
   cpSync(sourceDir, destDir, { recursive: true });
   console.log('✅ Storybook files copied to public/storybook-static');
+  
+  // Verify files were copied
+  try {
+    const files = readdirSync(destDir);
+    console.log(`✅ Verified: ${files.length} items in public/storybook-static`);
+  } catch (error) {
+    console.warn('⚠️  Could not verify copied files:', error.message);
+  }
 } else {
   console.error('❌ storybook-static directory not found');
+  console.error(`   Looking for: ${sourceDir}`);
   process.exit(1);
 }
 

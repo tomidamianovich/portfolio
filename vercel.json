@@ -10,5 +10,6 @@
     }
   ],
   "buildCommand": "pnpm build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "installCommand": "pnpm install"
 }
