@@ -7,7 +7,7 @@
     "build": "next build --turbopack && pnpm build-storybook",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook-static && node scripts/copy-storybook.mjs",
+    "build-storybook": "NODE_ENV=production storybook build -o storybook-static && node scripts/copy-storybook.mjs",
     "test": "pnpm exec jest",
     "test:watch": "pnpm exec jest --watch",
     "test:coverage": "pnpm exec jest --coverage",

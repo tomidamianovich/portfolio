@@ -14,6 +14,11 @@ const config: StorybookConfig = {
   },
   staticDirs: ["../public"],
   viteFinal: async (config) => {
+    // Set base path for deployment
+    if (process.env.NODE_ENV === "production") {
+      config.base = "/storybook/";
+    }
+
     // Optimize chunking to reduce bundle size
     if (config.build) {
       config.build.chunkSizeWarningLimit = 1000; // Increase limit to 1MB
