@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
+    "dompurify": "^3.3.1",
     "i18next": "^25.5.2",
     "i18next-http-backend": "^3.0.2",
     "next": "16.0.10",
@@ -35,6 +36,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/dompurify": "^3.2.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -9,6 +9,7 @@ import LanguageSelector, {
   LanguageSelectorTypeEnum,
 } from "@/components/features/LanguageSelector";
 import DarkModeToggle from "@/components/features/DarkModeToggle";
+import DOMPurify from "dompurify";
 
 import { GrLocationPin } from "react-icons/gr";
 import { FaRegFlag } from "react-icons/fa6";
@@ -48,10 +49,23 @@ export default function Home() {
     useSuspense: false,
   }) as UseTranslationResponse<"common", undefined>;
 
+  // Sanitize HTML content on client side
+  useEffect(() => {
+    if (typeof window !== "undefined" && t("about.content")) {
+      const sanitized = DOMPurify.sanitize(t("about.content"), {
+        ALLOWED_TAGS: ["p", "br", "strong", "em", "u", "a"],
+        ALLOWED_ATTR: ["href", "target", "rel"],
+      });
+      setSanitizedAboutContent(sanitized);
+    }
+  }, [t, i18n.language]);
+
   const currentLang = i18n.language || "es";
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [sanitizedAboutContent, setSanitizedAboutContent] =
+    useState<string>("");
 
   useEffect(() => {
     setMounted(true);
@@ -301,7 +315,11 @@ export default function Home() {
           <div className={styles.about}>
             <h2>{t("about.title")}</h2>
             {!!t("about.content") && (
-              <div dangerouslySetInnerHTML={{ __html: t("about.content") }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: sanitizedAboutContent || t("about.content"),
+                }}
+              />
             )}
           </div>
           {Object.values(SectionTypeEnum).map((section, key) => (
