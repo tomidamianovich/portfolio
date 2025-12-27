@@ -9,7 +9,6 @@
   justify-content: center;
   gap: var(--space-sm);
   width: fit-content;
-  margin: auto;
   font-weight: 500;
   font-size: var(--font-size-sm);
   letter-spacing: 0.5px;

@@ -73,6 +73,7 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: var(--space-xl);
   padding: var(--space-xl);
+  width: 100%;
 
   @media (max-width: 1024px) {
     justify-content: center;
@@ -253,6 +254,7 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: var(--space-xl);
   padding: var(--space-xl);
+  width: 100%;
 }
 
 :root[data-theme="dark"] .about {
