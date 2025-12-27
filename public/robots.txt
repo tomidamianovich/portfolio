@@ -3,8 +3,11 @@
 
 User-agent: *
 Allow: /
+<<<<<<< HEAD
 Disallow: /storybook/
 Disallow: /storybook-static/
+=======
+>>>>>>> c8f20d1 (feat: add Storybook build configuration for storybook branch)
 Disallow: /_next/
 Disallow: /api/
 

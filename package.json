@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack && pnpm build-storybook",
+    "build": "next build --turbopack",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "NODE_ENV=production storybook build -o storybook-static && node scripts/copy-storybook.mjs",
     "test": "pnpm exec jest",
     "test:watch": "pnpm exec jest --watch",
     "test:coverage": "pnpm exec jest --coverage",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
