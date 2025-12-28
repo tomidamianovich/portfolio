@@ -125,7 +125,7 @@ The language detection follows this priority order:
 - **Security** — HTML sanitization with DOMPurify
 ### Views
 
-<img alt="portfolio desktop view" src="https://github.com/user-attachments/assets/c7a81f22-e5e4-48fb-a2cc-d01cc963e480" />
+<img alt="portfolio desktop view" src="https://github.com/user-attachments/assets/ff39ee57-bafd-4912-8c84-1a928684657d" />
 
-<img alt="portfolio mobile view" src="https://github.com/user-attachments/assets/b0cb3bb1-008f-4fbe-be9b-9530baccc093" />
+<img alt="portfolio mobile view" src="https://github.com/user-attachments/assets/b72f5bab-a880-4acd-a052-b020c6b3bb4e" />
 
