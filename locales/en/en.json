@@ -28,6 +28,16 @@
     "title": "Back to top",
     "ariaLabel": "Button to scroll back to the top of the page"
   },
+  "footer": {
+    "storybook": {
+      "text": "View Storybook",
+      "linkText": "https://portfolio-storybook-tomasdamianovich.vercel.app/"
+    },
+    "github": {
+      "text": "Project on GitHub",
+      "linkText": "https://github.com/tomidamianovich/portfolio"
+    }
+  },
   "about": {
     "title": "About me",
     "content": "<p>I’m passionate about building efficient, accessible, and scalable web experiences using React and TypeScript. I currently develop travel, hotel, and package booking platforms with Vite and SSR, focusing on SEO and accessibility, including screen readers. I have also worked on creating Node middlewares and robust testing with Jest and React Testing Library. My day-to-day includes supporting and mentoring more junior teammates, always striving for clean, maintainable, and user-centered solutions.</p>"

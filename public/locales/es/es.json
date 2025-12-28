@@ -29,6 +29,16 @@
     "title": "Volver arriba",
     "ariaLabel": "Botón para volver al inicio de la página"
   },
+  "footer": {
+    "storybook": {
+      "text": "Ver Storybook",
+      "linkText": "https://portfolio-storybook-tomasdamianovich.vercel.app/"
+    },
+    "github": {
+      "text": "Proyecto en GitHub",
+      "linkText": "https://github.com/tomidamianovich/portfolio"
+    }
+  },
   "about": {
     "title": "Sobre mi",
     "content": "<p>Ingeniero en Sistemas y Desarrollador Frontend Senior especializado en React y TypeScript. Me apasiona crear experiencias web eficientes, accesibles y escalables, combinando performance, diseño y mantenibilidad. Actualmente desarrollo plataformas de alto tráfico en el sector de viajes, participando tanto en arquitectura como en la implementación de componentes críticos.</br>Busco seguir creciendo hacia roles de liderazgo técnico o arquitectura frontend, impulsando buenas prácticas, revisiones de código y diseño de sistemas robustos. Me motiva guiar equipos, elevar estándares y construir productos que aporten valor real al usuario.</p>"
