@@ -176,7 +176,7 @@ jest.mock("next/font/google", () => ({
   }),
 }));
 
-import Home from "./index";
+import Home from "../../pages/index";
 
 describe("Home page footer", () => {
   it("renders the footer with name and year", () => {
