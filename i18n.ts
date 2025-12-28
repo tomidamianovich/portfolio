@@ -1,6 +1,37 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { BackendModule } from "i18next";
+import { LanguageSelectorTypeEnum } from "@/components/features/LanguageSelector/LanguageSelector.types";
+
+function detectLanguage(): string {
+  const supportedLngs = Object.values(LanguageSelectorTypeEnum) as string[];
+
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("language");
+    if (stored && supportedLngs.includes(stored)) {
+      return stored;
+    }
+  }
+
+  if (typeof window !== "undefined" && navigator.language) {
+    const browserLang = navigator.language.split("-")[0].toLowerCase();
+
+    if (supportedLngs.includes(browserLang)) {
+      return browserLang;
+    }
+
+    if (navigator.languages) {
+      for (const lang of navigator.languages) {
+        const langCode = lang.split("-")[0].toLowerCase();
+        if (supportedLngs.includes(langCode)) {
+          return langCode;
+        }
+      }
+    }
+  }
+
+  return LanguageSelectorTypeEnum.EN;
+}
 
 if (!i18n.isInitialized) {
   if (typeof window !== "undefined") {
@@ -8,6 +39,12 @@ if (!i18n.isInitialized) {
     // Load es.json directly, use HttpBackend for other languages
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const esTranslations = require("./locales/es/es.json");
+
+    const detectedLanguage = detectLanguage();
+
+    if (!localStorage.getItem("language")) {
+      localStorage.setItem("language", detectedLanguage);
+    }
 
     // Create a hybrid backend that uses preloaded es.json
     const hybridBackend = {
@@ -36,12 +73,14 @@ if (!i18n.isInitialized) {
       .use(initReactI18next)
       .init({
         fallbackLng: "es",
-        supportedLngs: ["es", "en", "de"],
-        lng: "es",
+        supportedLngs: Object.values(LanguageSelectorTypeEnum),
+        lng: detectedLanguage,
         defaultNS: "common",
         ns: ["common"],
         interpolation: { escapeValue: false },
         react: { useSuspense: false },
+        load: "languageOnly",
+        nonExplicitSupportedLngs: true,
       })
       .catch((err) => {
         console.error("i18n init error:", err);
@@ -56,12 +95,14 @@ if (!i18n.isInitialized) {
       .use(initReactI18next)
       .init({
         fallbackLng: "es",
-        supportedLngs: ["es", "en", "de"],
+        supportedLngs: Object.values(LanguageSelectorTypeEnum),
         lng: "es",
         defaultNS: "common",
         ns: ["common"],
         interpolation: { escapeValue: false },
         react: { useSuspense: false },
+        load: "languageOnly",
+        nonExplicitSupportedLngs: true,
         // Ensure resources are loaded immediately
         initImmediate: false,
       })
