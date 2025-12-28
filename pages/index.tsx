@@ -2,6 +2,9 @@ import "@/i18n";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
+import { FiGithub } from "react-icons/fi";
+import { SiStorybook } from "react-icons/si";
+
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import type { GetServerSideProps } from "next";
@@ -70,7 +73,6 @@ export default function Home() {
     }
   }, [router.isReady, router.query, i18n]);
 
-  // Sanitize HTML content on client side
   useEffect(() => {
     if (typeof window !== "undefined" && t("about.content")) {
       const sanitized = DOMPurify.sanitize(t("about.content"), {
@@ -90,7 +92,6 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    // Reduced delay for better UX - still protects against basic scraping
     const timer = setTimeout(() => {
       const emailText = t("email");
       const phoneText = t("phone");
@@ -100,7 +101,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [t]);
 
-  // Memoize translations to avoid recalculating on every render
   const contacts = useMemo(
     () => t("contact", { returnObjects: true }) as ContactItemType[],
     [t]
@@ -162,7 +162,6 @@ export default function Home() {
     [education]
   );
 
-  // Memoize URLs to avoid recalculating
   const siteUrl = useMemo(
     () =>
       typeof window !== "undefined"
@@ -172,7 +171,6 @@ export default function Home() {
   );
   const imageUrl = useMemo(() => `${siteUrl}/profile-pic.png`, [siteUrl]);
 
-  // Memoize schema to avoid recalculating on every render
   const personSchema = useMemo(
     () => ({
       "@context": "https://schema.org",
@@ -361,6 +359,31 @@ export default function Home() {
             title={t("goToTop.title")}
           />
         </main>
+        <footer className={styles.footer}>
+          <p className={styles.footerText}>
+            {t("name")} © {new Date().getFullYear()}
+          </p>
+          <span className={styles.footerSeparator}>•</span>
+          <a
+            href={t("footer.storybook.linkText")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footerLink}
+          >
+            <SiStorybook size={16} aria-hidden />
+            {t("footer.storybook.text")}
+          </a>
+          <span className={styles.footerSeparator}>•</span>
+          <a
+            href={t("footer.github.linkText")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footerLink}
+          >
+            <FiGithub size={16} aria-hidden />
+            {t("footer.github.text")}
+          </a>
+        </footer>
       </div>
     </>
   );

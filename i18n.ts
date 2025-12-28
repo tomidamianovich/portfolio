@@ -47,7 +47,9 @@ if (!i18n.isInitialized) {
           callback(null, enTranslations);
           return;
         }
-        fetch(`/locales/${language}/${language}.json`)
+        const cacheBuster =
+          process.env.NODE_ENV === "development" ? `?t=${Date.now()}` : "";
+        fetch(`/locales/${language}/${language}.json${cacheBuster}`)
           .then((res) => res.json())
           .then((data) => callback(null, data))
           .catch((err) => callback(err as Error, null));

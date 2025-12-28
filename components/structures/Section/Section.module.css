@@ -538,7 +538,7 @@
 }
 
 :root[data-theme="dark"] .gridItem {
-  background: var(--color-gray-800);
+  background: var(--color-gray-700);
   border-color: var(--color-gray-700);
 }
 

@@ -20,7 +20,7 @@
     "description": "Portfolio von Tomás Damianovich, Senior Frontend Software Engineer, spezialisiert auf React, TypeScript und Webentwicklung."
   },
   "name": "Tomás Damianovich Reddy",
-  "position": "Senior Frontend Software Engineer",
+  "position": "Senior Frontend Software Engineer | Bachelor in Information Systems Engineering",
   "titleDetail": "Madrid, Spanien (GMT+2)",
   "nationality": "Argentinisch - Spanisch",
   "phone": "(+34) - 667 094 477",
@@ -28,6 +28,16 @@
   "goToTop": {
     "title": "Nach oben",
     "ariaLabel": "Button zum Zurückscrollen zum Seitenanfang"
+  },
+  "footer": {
+    "storybook": {
+      "text": "Storybook ansehen",
+      "linkText": "https://portfolio-storybook-tomasdamianovich.vercel.app/"
+    },
+    "github": {
+      "text": "Projekt auf GitHub",
+      "linkText": "https://github.com/tomidamianovich/portfolio"
+    }
   },
   "about": {
     "title": "Über mich",
