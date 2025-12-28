@@ -4,15 +4,15 @@ import type { BackendModule, ReadCallback } from "i18next";
 // This ensures translations are available synchronously during SSR
 // Using require so the JSON files are bundled at build time
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const esTranslations = require("./locales/es/es.json");
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const enTranslations = require("./locales/en/en.json");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const esTranslations = require("./locales/es/es.json");
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const deTranslations = require("./locales/de/de.json");
 
 const translations: Record<string, unknown> = {
-  es: esTranslations,
   en: enTranslations,
+  es: esTranslations,
   de: deTranslations,
 };
 

@@ -2,11 +2,11 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="es">
+    <Html lang="en">
       <Head>
         <link
           rel="preload"
-          href="/locales/es/es.json"
+          href="/locales/en/en.json"
           as="fetch"
           crossOrigin="anonymous"
         />

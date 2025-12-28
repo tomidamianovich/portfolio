@@ -1,5 +1,5 @@
 export enum LanguageSelectorTypeEnum {
-  ES = "es",
   EN = "en",
+  ES = "es",
   DE = "de",
 }

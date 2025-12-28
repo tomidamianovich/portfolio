@@ -7,7 +7,9 @@ import { GrLanguage } from "react-icons/gr";
 
 const LanguageSelector: React.FC = () => {
   const { i18n, t } = useTranslation("common", { useSuspense: false });
-  const [currentLanguage, setCurrentLanguage] = useState<string>("es");
+  const [currentLanguage, setCurrentLanguage] = useState<string>(
+    i18n.language || "en"
+  );
 
   const handleChangeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -16,17 +18,39 @@ const LanguageSelector: React.FC = () => {
   };
 
   useEffect(() => {
-    const stored =
-      (localStorage.getItem("language") as LanguageSelectorTypeEnum | null) ??
-      null;
+    setCurrentLanguage(i18n.language || "en");
+  }, [i18n.language]);
 
-    if (stored) {
-      i18n.changeLanguage(stored);
-      setCurrentLanguage(stored);
-    } else {
-      setCurrentLanguage(i18n.language);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryLang = urlParams.get("lang") || urlParams.get("language");
+      const supportedLngs = Object.values(LanguageSelectorTypeEnum);
+
+      if (queryLang) {
+        const normalizedLang = queryLang.split("-")[0].toLowerCase();
+        if (
+          supportedLngs.includes(normalizedLang as LanguageSelectorTypeEnum) &&
+          i18n.language !== normalizedLang
+        ) {
+          i18n.changeLanguage(normalizedLang);
+          setCurrentLanguage(normalizedLang);
+          localStorage.setItem("language", normalizedLang);
+        }
+      } else {
+        const stored = localStorage.getItem("language");
+        if (
+          stored &&
+          supportedLngs.includes(stored as LanguageSelectorTypeEnum) &&
+          i18n.language !== stored
+        ) {
+          i18n.changeLanguage(stored);
+          setCurrentLanguage(stored);
+        }
+      }
     }
-  }, [i18n]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
