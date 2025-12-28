@@ -3,29 +3,24 @@ import { initReactI18next } from "react-i18next";
 import { BackendModule } from "i18next";
 import { LanguageSelectorTypeEnum } from "@/components/features/LanguageSelector/LanguageSelector.types";
 
-function detectLanguage(): string {
+function detectLanguage(ignoreLocalStorage = false): string {
   const supportedLngs = Object.values(LanguageSelectorTypeEnum) as string[];
 
   if (typeof window !== "undefined") {
-    const stored = localStorage.getItem("language");
-    if (stored && supportedLngs.includes(stored)) {
-      return stored;
-    }
-  }
-
-  if (typeof window !== "undefined" && navigator.language) {
-    const browserLang = navigator.language.split("-")[0].toLowerCase();
-
-    if (supportedLngs.includes(browserLang)) {
-      return browserLang;
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryLang = urlParams.get("lang") || urlParams.get("language");
+    if (queryLang) {
+      const normalizedQueryLang = queryLang.split("-")[0].toLowerCase();
+      if (supportedLngs.includes(normalizedQueryLang)) {
+        localStorage.setItem("language", normalizedQueryLang);
+        return normalizedQueryLang;
+      }
     }
 
-    if (navigator.languages) {
-      for (const lang of navigator.languages) {
-        const langCode = lang.split("-")[0].toLowerCase();
-        if (supportedLngs.includes(langCode)) {
-          return langCode;
-        }
+    if (!ignoreLocalStorage) {
+      const stored = localStorage.getItem("language");
+      if (stored && supportedLngs.includes(stored)) {
+        return stored;
       }
     }
   }
@@ -35,18 +30,11 @@ function detectLanguage(): string {
 
 if (!i18n.isInitialized) {
   if (typeof window !== "undefined") {
-    // Client-side: preload es.json for faster initial load
-    // Load es.json directly, use HttpBackend for other languages
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const esTranslations = require("./locales/es/es.json");
+    const enTranslations = require("./locales/en/en.json");
 
-    const detectedLanguage = detectLanguage();
+    const detectedLanguage = detectLanguage(true);
 
-    if (!localStorage.getItem("language")) {
-      localStorage.setItem("language", detectedLanguage);
-    }
-
-    // Create a hybrid backend that uses preloaded es.json
     const hybridBackend = {
       type: "backend" as const,
       init: function () {},
@@ -55,12 +43,10 @@ if (!i18n.isInitialized) {
         namespace: string,
         callback: (err: Error | null, data: unknown) => void
       ) {
-        // Use preloaded es.json for instant loading
-        if (language === "es") {
-          callback(null, esTranslations);
+        if (language === "en") {
+          callback(null, enTranslations);
           return;
         }
-        // For other languages, fetch via HTTP
         fetch(`/locales/${language}/${language}.json`)
           .then((res) => res.json())
           .then((data) => callback(null, data))
@@ -72,7 +58,7 @@ if (!i18n.isInitialized) {
       .use(hybridBackend as BackendModule)
       .use(initReactI18next)
       .init({
-        fallbackLng: "es",
+        fallbackLng: "en",
         supportedLngs: Object.values(LanguageSelectorTypeEnum),
         lng: detectedLanguage,
         defaultNS: "common",
@@ -86,24 +72,35 @@ if (!i18n.isInitialized) {
         console.error("i18n init error:", err);
       });
   } else {
-    // Server-side: use direct imports for synchronous loading during SSR
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const serverBackend = require("./i18n-server-backend").default;
-    // Initialize synchronously and wait for it to complete
+
+    let serverLang = "en";
+    if (
+      typeof process !== "undefined" &&
+      process.env.NEXT_PUBLIC_INITIAL_LANG
+    ) {
+      const envLang =
+        process.env.NEXT_PUBLIC_INITIAL_LANG.split("-")[0].toLowerCase();
+      const supportedLngs = Object.values(LanguageSelectorTypeEnum);
+      if (supportedLngs.includes(envLang as LanguageSelectorTypeEnum)) {
+        serverLang = envLang;
+      }
+    }
+
     i18n
       .use(serverBackend)
       .use(initReactI18next)
       .init({
-        fallbackLng: "es",
+        fallbackLng: "en",
         supportedLngs: Object.values(LanguageSelectorTypeEnum),
-        lng: "es",
+        lng: serverLang,
         defaultNS: "common",
         ns: ["common"],
         interpolation: { escapeValue: false },
         react: { useSuspense: false },
         load: "languageOnly",
         nonExplicitSupportedLngs: true,
-        // Ensure resources are loaded immediately
         initImmediate: false,
       })
       .catch((err) => {

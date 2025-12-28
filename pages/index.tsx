@@ -3,6 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import type { GetServerSideProps } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Pill, { PillVariantEnum, IconTypeEnum } from "@/components/base/Pill";
 import LanguageSelector, {
@@ -45,9 +47,28 @@ type ContactItemType = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const { t, i18n } = useTranslation("common", {
     useSuspense: false,
   }) as UseTranslationResponse<"common", undefined>;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && router.isReady) {
+      const queryLang = router.query.lang || router.query.language;
+      const supportedLngs = Object.values(LanguageSelectorTypeEnum);
+
+      if (queryLang && typeof queryLang === "string") {
+        const normalizedLang = queryLang.split("-")[0].toLowerCase();
+        if (
+          supportedLngs.includes(normalizedLang as LanguageSelectorTypeEnum) &&
+          i18n.language !== normalizedLang
+        ) {
+          i18n.changeLanguage(normalizedLang);
+          localStorage.setItem("language", normalizedLang);
+        }
+      }
+    }
+  }, [router.isReady, router.query, i18n]);
 
   // Sanitize HTML content on client side
   useEffect(() => {
@@ -60,7 +81,7 @@ export default function Home() {
     }
   }, [t, i18n.language]);
 
-  const currentLang = i18n.language || "es";
+  const currentLang = i18n.language || "en";
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -344,3 +365,27 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const queryLang = context.query.lang || context.query.language;
+  let initialLang: string = "en";
+  const supportedLngs = Object.values(LanguageSelectorTypeEnum);
+
+  if (queryLang && typeof queryLang === "string") {
+    const normalizedLang = queryLang.split("-")[0].toLowerCase();
+    if (supportedLngs.includes(normalizedLang as LanguageSelectorTypeEnum)) {
+      initialLang = normalizedLang;
+    }
+  }
+
+  const i18n = (await import("@/i18n")).default;
+  if (i18n.isInitialized && i18n.language !== initialLang) {
+    await i18n.changeLanguage(initialLang);
+  }
+
+  return {
+    props: {
+      initialLang,
+    },
+  };
+};
