@@ -13,14 +13,14 @@
   height: var(--space-3xl);
   z-index: 9999;
   border: 2px solid var(--color-gray-200);
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   color: var(--color-gray-700);
 }
 
 .goToTop :global(svg) {
   width: var(--space-md);
   height: var(--space-md);
-  transition: transform 0.2s ease;
+  transition: transform 0.5s ease;
 }
 
 .goToTop:hover {

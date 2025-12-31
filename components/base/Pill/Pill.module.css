@@ -2,7 +2,7 @@
   background-color: var(--color-gray-200);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--border-radius-lg);
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
 
   display: flex;
   align-content: center;

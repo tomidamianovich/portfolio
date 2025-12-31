@@ -40,6 +40,7 @@
 :root[data-theme="dark"] .pillsView h2 {
   color: var(--color-white);
 }
+
 :root[data-theme="dark"] .pillsView p {
   color: var(--color-white);
 }
@@ -51,13 +52,6 @@
   gap: var(--space-lg);
   margin: 0 var(--space-md);
   padding: 0;
-
-  @media (max-width: 1024px) {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin: 0;
-  }
 }
 
 .groupedView {
@@ -94,6 +88,10 @@
   letter-spacing: -0.01em;
   position: relative;
   padding-bottom: var(--space-sm);
+
+  @media (max-width: 480px) {
+    margin-bottom: var(--space-md);
+  }
 }
 
 :root[data-theme="dark"] .defaultView h2,
@@ -139,7 +137,7 @@
 .defaultView h3 a {
   text-decoration: none;
   color: var(--color-primary);
-  transition: color 0.2s ease, text-decoration 0.2s ease;
+  transition: color 0.5s ease, text-decoration 0.5s ease;
   border-bottom: 1px solid transparent;
 }
 
@@ -191,10 +189,6 @@
   display: flex;
   flex-direction: column;
   margin: 0 var(--space-md);
-
-  @media (max-width: 1024px) {
-    margin: 0;
-  }
 }
 
 :root[data-theme="dark"] .sectionItemGrouped button {
@@ -203,17 +197,9 @@
   border-color: var(--color-gray-900);
 }
 
-:root[data-theme="dark"] .sectionItemGrouped button {
-  color: var(--color-white);
-}
-
 .sectionItemGrouped button {
   margin: 0 var(--space-md);
   margin-top: var(--space-sm);
-
-  @media (max-width: 1024px) {
-    align-self: center;
-  }
 }
 
 .sectionGroupedItemContent {
@@ -222,8 +208,8 @@
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
   transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
-    padding-bottom 0.4s ease-in-out;
-  max-height: 200px;
+    padding-bottom 0.4s ease-in-out, margin-bottom 0.4s ease-in-out;
+  max-height: 500px;
   overflow: hidden;
   opacity: 1;
   padding-bottom: var(--space-md);
@@ -233,10 +219,10 @@
   opacity: 0;
   max-height: 0;
   padding-bottom: 0;
-  visibility: hidden;
-  height: 0;
-  position: absolute;
+  margin-bottom: 0;
   pointer-events: none;
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
+    padding-bottom 0.4s ease-in-out, margin-bottom 0.4s ease-in-out;
 }
 
 .sectionItem {
@@ -245,30 +231,19 @@
   margin: 0 var(--space-md);
   gap: var(--space-xl);
   transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
-    padding-bottom 0.4s ease-in-out, transform 0.2s ease;
-  max-height: 500px;
+    padding 0.4s ease-in-out, margin-bottom 0.4s ease-in-out,
+    transform 0.5s ease;
+  max-height: 1000px;
   overflow: hidden;
   opacity: 1;
   padding: var(--space-md);
   border-radius: var(--border-radius-sm);
   background: transparent;
-
-  @media (max-width: 1024px) {
-    margin: 0;
-    display: block;
-    padding: var(--space-sm) 0;
-  }
 }
 
 .sectionItem:hover {
   background: var(--color-gray-100);
   transform: translateX(4px);
-}
-
-@media (max-width: 1024px) {
-  .sectionItem:hover {
-    transform: none;
-  }
 }
 
 .sectionItem.visible:not(:last-child) {
@@ -278,11 +253,11 @@
 .sectionItem.hidden {
   opacity: 0;
   max-height: 0;
-  padding-bottom: 0;
+  padding: 0;
+  margin-bottom: 0;
   pointer-events: none;
-  height: 0;
-  position: absolute;
-  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out,
+    padding 0.4s ease-in-out, margin-bottom 0.4s ease-in-out;
 }
 
 .sectionItem > :last-child {
@@ -309,34 +284,17 @@
   margin: 0;
   display: flex;
   gap: var(--space-sm);
+}
 
-  & > p:nth-child(2)::after {
-    content: ")";
-  }
+.mobileDates > p:nth-child(2)::after {
+  content: ")";
+}
 
-  & > p:nth-child(2)::before {
-    content: "(";
-  }
-
-  @media (min-width: 1024px) {
-    display: none;
-  }
-
-  @media (max-width: 480px) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    p:nth-child(2) {
-      display: none;
-    }
-  }
+.mobileDates > p:nth-child(2)::before {
+  content: "(";
 }
 
 .desktopDates {
-  @media (max-width: 1024px) {
-    display: none;
-  }
 }
 
 :root[data-theme="dark"] .desktopDates p {
@@ -402,10 +360,6 @@
     transparent
   );
   z-index: 0;
-
-  @media (max-width: 1024px) {
-    left: 55px;
-  }
 }
 
 .timelineItem {
@@ -416,10 +370,6 @@
   padding-top: 0;
   padding-bottom: var(--space-lg);
   background: transparent;
-
-  @media (max-width: 1024px) {
-    padding-left: var(--space-4xl);
-  }
 }
 
 .timelineItem:hover {
@@ -444,10 +394,6 @@
   transform: translateX(-50%);
   color: var(--color-white);
   transition: background-color 0.3s ease;
-
-  @media (max-width: 1024px) {
-    left: var(--space-lg);
-  }
 }
 
 :root[data-theme="dark"] .timelineIcon {
@@ -502,25 +448,15 @@
 
 .gridView {
   display: grid;
-  grid-template-columns: min-content repeat(auto-fit, minmax(0, 1fr));
-  grid-template-columns: min-content repeat(
-      calc(var(--n-cols, 2) - 1),
-      minmax(0, 1fr)
-    );
   grid-template-columns: min-content 1fr 1fr;
   gap: 12px;
   align-items: start;
   width: 100%;
   padding-left: var(--space-xl);
+}
 
-  h2 {
-    margin-right: var(--space-5xl);
-  }
-
-  @media (max-width: 1024px) {
-    margin: 0;
-    grid-template-columns: 1fr;
-  }
+.gridView h2 {
+  margin-right: var(--space-5xl);
 }
 
 .gridItem {
@@ -529,7 +465,7 @@
   border-radius: var(--border-radius-md);
   border: 1px solid var(--color-gray-200);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   height: 100%;
   margin: 0;
   display: flex;
@@ -578,4 +514,70 @@
   font-weight: 600;
   color: var(--color-gray-800);
   margin-top: var(--space-xs);
+}
+
+@media (max-width: 1024px) {
+  .pillsView ul {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .sectionItemGrouped {
+    margin: 0;
+  }
+
+  .sectionItemGrouped button {
+    align-self: center;
+  }
+
+  .sectionItem {
+    margin: 0;
+    display: block;
+    max-height: revert;
+  }
+
+  .sectionItem:hover {
+    transform: none;
+  }
+
+  .timelineItem {
+    padding-left: var(--space-3xl);
+  }
+
+  .timelineIcon {
+    left: calc(var(--space-xl) - 16px);
+  }
+
+  .gridView {
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .mobileDates {
+    display: flex;
+  }
+
+  .desktopDates {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileDates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .mobileDates p:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileDates {
+    display: none;
+  }
 }
