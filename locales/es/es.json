@@ -19,7 +19,7 @@
     "description": "Portfolio de Tomás Damianovich, Senior Frontend Software Engineer especializado en React, TypeScript y desarrollo web."
   },
   "name": "Tomás Damianovich Reddy",
-  "position": "Senior Frontend Software Engineer | Ingenieria en Sistemas de Información",
+  "position": "Senior Frontend Software Engineer | Ingeniero en Sistemas de Información",
   "titleDetail": "Madrid, España (GMT+2)",
   "nationality": "Argentino - Español",
   "phone": "(+34) - 667 094 477",
@@ -130,7 +130,7 @@
       {
         "date": "2013-02",
         "endDate": "2019-02",
-        "subtitle": "Ingenieria en Sistemas de Información",
+        "subtitle": "Ingeniero en Sistemas de Información",
         "title": "Universidad Tecnologica Nacional",
         "link": "https://www.utn.edu.ar/",
         "titleDetail": "La Plata, Argentina"

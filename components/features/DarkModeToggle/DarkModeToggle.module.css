@@ -4,6 +4,10 @@
   align-items: center;
   justify-content: flex-end;
   padding: var(--space-md) 0;
+
+  @media (max-width: 480px) {
+    padding: 0 !important;
+  }
 }
 
 :root[data-theme="dark"] .darkModeToggleButtonsWrapper {
@@ -22,7 +26,7 @@
   flex-wrap: wrap;
   margin-left: var(--space-sm);
 
-  @media (max-width: 380px) {
+  @media (max-width: 480px) {
     padding: 0;
     margin: 0;
   }
