@@ -7,13 +7,10 @@ import type { BackendModule, ReadCallback } from "i18next";
 const enTranslations = require("./locales/en/en.json");
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const esTranslations = require("./locales/es/es.json");
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const deTranslations = require("./locales/de/de.json");
 
 const translations: Record<string, unknown> = {
   en: enTranslations,
   es: esTranslations,
-  de: deTranslations,
 };
 
 const serverBackend: BackendModule = {
