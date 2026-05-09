@@ -66,9 +66,9 @@
         "date": "2022-06",
         "endDate": null,
         "subtitle": "Senior Frontend Engineer / Technical Coach",
-        "content": "Technical lead at Viajes El Corte Inglés responsible for frontend architecture, design systems, and delivery strategy across flights, hotels, and vacation packages. I lead backlog definition, translate business requirements into scalable technical solutions, and mentor engineers. I drive Design System and Design Token adoption as a single source of truth. I also lead AI-assisted development initiatives integrating Claude and Figma via MCP (Model Context Protocol) to reduce friction between design and implementation. Tech stack includes React, TypeScript, SSR, Vite, Linaria, Sass, pnpm, and Azure DevOps with focus on performance, accessibility, and scalability.",
-        "title": "Viajes El Corte Inglés",
-        "link": "https://www.elcorteingles.es/viajes/",
+        "content": "Technical lead at Capitole Consulting for a major Spanish travel platform. Responsible for frontend architecture, delivery, and technical strategy across flights, hotels, and vacation packages. I define and prioritize technical backlog, translate business requirements into scalable solutions, and mentor engineers. I drive Design System and Design Token adoption as a single source of truth. I also lead AI-assisted development initiatives integrating Claude and Figma via MCP (Model Context Protocol) to reduce friction between design and implementation. Tech stack includes React, TypeScript, SSR, Vite, Linaria, Sass, pnpm, and Azure DevOps, with focus on performance, accessibility, and scalability.",
+        "title": "Capitole Consulting",
+        "link": "https://www.capitole-consulting.com/",
         "titleDetail": "Madrid, Spain",
         "mode": "Hybrid"
       },
