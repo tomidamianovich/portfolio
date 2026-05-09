@@ -16,10 +16,10 @@
   },
   "seo": {
     "title": "Portfolio of Tomás Damianovich - Senior Frontend Engineer",
-    "description": "Portfolio of Tomás Damianovich, Senior Frontend Software Engineer specialized in React, TypeScript, and web development."
+    "description": "Portfolio of Tomás Damianovich, Senior Frontend Software Engineer specialized in React, TypeScript, frontend architecture, and scalable web systems."
   },
   "name": "Tomás Damianovich Reddy",
-  "position": "Senior Frontend Software Engineer | Bachelor in Information Systems Engineering",
+  "position": "Senior Frontend Software Engineer | Information Systems Engineer",
   "titleDetail": "Madrid, Spain (GMT+2)",
   "nationality": "Argentinian - Spanish",
   "phone": "(+34) - 667 094 477",
@@ -40,7 +40,7 @@
   },
   "about": {
     "title": "About me",
-    "content": "<p>I’m passionate about building efficient, accessible, and scalable web experiences using React and TypeScript. I currently develop travel, hotel, and package booking platforms with Vite and SSR, focusing on SEO and accessibility, including screen readers. I have also worked on creating Node middlewares and robust testing with Jest and React Testing Library. My day-to-day includes supporting and mentoring more junior teammates, always striving for clean, maintainable, and user-centered solutions.</p>"
+    "content": "<p>Senior Frontend Engineer specialized in React and TypeScript with a focus on scalable architecture, performance, and design systems. I build high-traffic web platforms with strong emphasis on maintainability, accessibility, and user experience. Currently working in the travel industry, contributing to system design, frontend architecture, and critical component development.</br>I aim to grow into technical leadership or frontend architecture roles, driving engineering standards, scalable systems, and high-quality product delivery.</p>"
   },
   "contact": [
     {
@@ -65,18 +65,18 @@
       {
         "date": "2022-06",
         "endDate": null,
-        "subtitle": "Senior Developer (React)",
-        "content": "I am part of a Frontend team as a consultant on a Travel platform for a major Spanish group, mainly developing with React, TypeScript, Jest, React Testing Library, Styled Components, Storybook, and Node for SSR. I also participated in creating Node middlewares. I use libraries like React Query and tools like Vite and Webpack. I work under SCRUM methodology and manage tasks with JIRA.",
-        "title": "Capitole Consulting",
-        "link": "https://www.capitole-consulting.com/",
+        "subtitle": "Senior Frontend Engineer / Technical Coach",
+        "content": "Technical lead at Viajes El Corte Inglés responsible for frontend architecture, design systems, and delivery strategy across flights, hotels, and vacation packages. I lead backlog definition, translate business requirements into scalable technical solutions, and mentor engineers. I drive Design System and Design Token adoption as a single source of truth. I also lead AI-assisted development initiatives integrating Claude and Figma via MCP (Model Context Protocol) to reduce friction between design and implementation. Tech stack includes React, TypeScript, SSR, Vite, Linaria, Sass, pnpm, and Azure DevOps with focus on performance, accessibility, and scalability.",
+        "title": "Viajes El Corte Inglés",
+        "link": "https://www.elcorteingles.es/viajes/",
         "titleDetail": "Madrid, Spain",
         "mode": "Hybrid"
       },
       {
         "date": "2021-05",
         "endDate": "2022-06",
-        "subtitle": "Senior Developer - Technical Lead (React)",
-        "content": "I was part of a Frontend team in the largest eCommerce platform in Latin America, starting as Senior Developer and later as Acting Tech-Lead, performing peer follow-ups, technical interviews, and advising on planning to non-technical verticals. We used React, TypeScript, Jest, React Testing Library, SASS, Storybook, Next-like tools, and Material UI. SCRUM methodology and task management with JIRA.",
+        "subtitle": "Senior Frontend Developer - Tech Lead",
+        "content": "Worked in a high-scale e-commerce platform in LATAM, evolving from Senior Developer to Acting Tech Lead. Responsible for technical interviews, team mentoring, and frontend architecture decisions. Stack included React, TypeScript, Jest, React Testing Library, Sass, Storybook, and Material UI.",
         "title": "MercadoLibre",
         "link": "https://www.mercadolibre.com.ar/",
         "titleDetail": "Buenos Aires, Argentina",
@@ -85,8 +85,8 @@
       {
         "date": "2020-01",
         "endDate": "2021-05",
-        "subtitle": "Semi-Senior Developer (React)",
-        "content": "I was part of a Frontend team on a platform connecting influencers and brands. Development with React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap, and backend consumption with Django (Python). Remote work between Argentina and the USA, using written and spoken English.",
+        "subtitle": "Semi-Senior Frontend Developer",
+        "content": "Built a platform connecting influencers and brands using React, TypeScript, Context API, Jest, React Testing Library, Sass, and Django backend integration. Worked remotely across Argentina and USA with English communication.",
         "title": "Cohley",
         "link": "https://www.cohley.com/",
         "titleDetail": "New York, USA",
@@ -95,8 +95,8 @@
       {
         "date": "2019-07",
         "endDate": "2020-01",
-        "subtitle": "Semi-Senior Developer (React)",
-        "content": "I participated in the development of a client management and support platform for a major Mexican Telecom Group. Using React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API, and backend consumption with microservices. SCRUM methodology and task management with JIRA.",
+        "subtitle": "Semi-Senior Frontend Developer",
+        "content": "Developed telecom client management platform using React, TypeScript, Material UI, Formik, and microservices architecture with Jest and RTL testing.",
         "title": "GlobalLogic",
         "link": "https://www.globallogic.com/",
         "titleDetail": "La Plata, Argentina",
@@ -105,8 +105,8 @@
       {
         "date": "2018-07",
         "endDate": "2019-07",
-        "subtitle": "Junior Developer (Vue)",
-        "content": "I was part of the Frontend team responsible for the company's Institutional Portal, using Vue JS, Jest, React Testing Library, Material UI, and Redux. Agile methodology (SCRUM) with a distributed team between Argentina and the USA, using written and spoken English for daily communication. Task management with JIRA.",
+        "subtitle": "Junior Frontend Developer",
+        "content": "Developed institutional portal using Vue.js, Redux, and JavaScript in a distributed team environment between Argentina and USA under Scrum methodology.",
         "title": "Accenture",
         "link": "https://www.accenture.com/",
         "titleDetail": "La Plata, Argentina",
@@ -115,8 +115,8 @@
       {
         "date": "2016-06",
         "endDate": "2018-07",
-        "subtitle": "Junior Developer (Web UI)",
-        "content": "I started with a 6-month internship and later obtained a position in the Systems department of Vialidad for driver license management. Frontend development with jQuery, CSS, Ajax, and MySQL, and backend with PHP (Symfony), including database administration for queries and updates.",
+        "subtitle": "Junior Web Developer",
+        "content": "Developed government systems using jQuery, PHP (Symfony), Ajax, and MySQL for driver license management systems.",
         "title": "Provincial Government of Buenos Aires",
         "titleDetail": "La Plata, Argentina",
         "link": "https://www.gba.gob.ar/",
@@ -159,82 +159,22 @@
     "items": [
       {
         "title": "Quirón Prevención",
-        "titleDetail": "Risk prevention for analysis, programming, and IT positions",
+        "titleDetail": "Risk prevention for IT roles",
         "date": "2023-06"
       },
       {
         "title": "Udemy",
-        "titleDetail": "Angular - The Complete Guide (2022 Edition)",
+        "titleDetail": "Angular - The Complete Guide (2022)",
         "date": "2022-06"
       },
       {
         "title": "Udemy",
-        "titleDetail": "Complete jQuery Course Modern 2022 for Beginners to Advanced",
+        "titleDetail": "Testing React Apps with RTL",
         "date": "2022-06"
       },
       {
-        "title": "Udemy",
-        "titleDetail": "Intercultural Communication",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Culture | How to Make Team Decisions",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "EF SET English Certificate 78/100 (C2 Proficient)",
         "title": "EF SET",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Effective Delegation for New Managers",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "GIT: Advanced Commands",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Growth Hacking with Digital Marketing",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Leadership: How to Influence, Inspire and Impact as a Leader",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Testing React apps with React Testing Library (RTL)",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Time Management Mastery: Do More, Stress Less",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Node: From Zero to Expert",
-        "title": "Udemy",
-        "date": "2022-04"
-      },
-      {
-        "titleDetail": "Understanding TypeScript",
-        "title": "Udemy",
-        "date": "2022-02"
-      },
-      {
-        "titleDetail": "Diversity, Equity, and Inclusion: A Beginner’s Guide",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Webpack 5: The Complete Guide For Beginners",
-        "title": "Udemy",
+        "titleDetail": "English Certificate 78/100 (C2)",
         "date": "2022-06"
       }
     ]
