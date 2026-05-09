@@ -40,7 +40,7 @@
   },
   "about": {
     "title": "Sobre mi",
-    "content": "<p>Ingeniero en Sistemas y Desarrollador Frontend Senior especializado en React y TypeScript. Me apasiona crear experiencias web eficientes, accesibles y escalables, combinando performance, diseño y mantenibilidad. Actualmente desarrollo plataformas de alto tráfico en el sector de viajes, participando tanto en arquitectura como en la implementación de componentes críticos.</br>Busco seguir creciendo hacia roles de liderazgo técnico o arquitectura frontend, impulsando buenas prácticas, revisiones de código y diseño de sistemas robustos. Me motiva guiar equipos, elevar estándares y construir productos que aporten valor real al usuario.</p>"
+    "content": "<p>Ingeniero en Sistemas y Desarrollador Frontend Senior especializado en React y TypeScript. Me apasiona construir productos web escalables, accesibles y de alto rendimiento, combinando arquitectura, performance y experiencia de usuario. Actualmente trabajo en plataformas de alto tráfico en el sector de viajes, participando en decisiones de arquitectura, sistemas de diseño y desarrollo de componentes críticos.</br>Busco evolucionar hacia roles de liderazgo técnico o arquitectura frontend, impulsando estándares de calidad, buenas prácticas y sistemas escalables que aporten valor real al usuario.</p>"
   },
   "contact": [
     {
@@ -65,10 +65,10 @@
       {
         "date": "2022-06",
         "endDate": null,
-        "subtitle": "Desarrollador Senior (React)",
-        "content": "Formo parte de un equipo Front como consultor en una plataforma de Viajes de un importante grupo Español, desarrollando principalmente con React, TypeScript, Jest, React Testing Library, Styled Components, Storybook y Node para SSR. He participado también en la creación de middlewares con Node. Uso librerías como React Query y herramientas como Vite y Webpack. Trabajo bajo metodología SCRUM y gestiono tareas con JIRA.",
-        "title": "Capitole Consulting",
-        "link": "https://www.capitole-consulting.com/",
+        "subtitle": "Senior Frontend Engineer / Technical Coach",
+        "content": "Lidero el desarrollo de producto en Viajes El Corte Inglés, con responsabilidad sobre arquitectura frontend, delivery y estrategia técnica en plataformas de vuelos, hoteles y paquetes vacacionales. Defino y priorizo backlog técnico, traduzo requerimientos de negocio en soluciones escalables y acompaño al equipo en la ejecución. Impulso la adopción de Design Systems y Design Tokens como fuente única de verdad. Lidero iniciativas de desarrollo asistido por IA integrando Claude y Figma mediante MCP (Model Context Protocol) para reducir fricción entre diseño y código. Trabajo con React, TypeScript, SSR, Linaria, Sass, Vite y Azure DevOps, con foco en performance, accesibilidad y calidad de código.",
+        "title": "Viajes El Corte Inglés",
+        "link": "https://www.elcorteingles.es/viajes/",
         "titleDetail": "Madrid, España",
         "mode": "Hibrido"
       },
@@ -76,7 +76,7 @@
         "date": "2021-05",
         "endDate": "2022-06",
         "subtitle": "Desarrollador Senior - Líder Técnico (React)",
-        "content": "Formé parte de un equipo Front en la plataforma de Ecommerce más importante de Latinoamérica, comenzando como Desarrollador Senior y luego Acting Tech-Lead, realizando seguimiento de compañeros, entrevistas técnicas y asesoramiento en planificación a verticales no técnicas. Se utilizaba React, TypeScript, Jest, React Testing Library, SASS, Storybook, herramientas similares a Next y Material UI. Metodología SCRUM y gestión de tareas con JIRA.",
+        "content": "Formé parte del equipo Frontend en la plataforma de ecommerce más importante de Latinoamérica, comenzando como Senior Developer y evolucionando a Acting Tech Lead. Participé en seguimiento de equipo, entrevistas técnicas y definición de arquitectura. Trabajo con React, TypeScript, Jest, React Testing Library, Sass, Storybook, Material UI y SSR.",
         "title": "MercadoLibre",
         "link": "https://www.mercadolibre.com.ar/",
         "titleDetail": "Buenos Aires, Argentina",
@@ -86,7 +86,7 @@
         "date": "2020-01",
         "endDate": "2021-05",
         "subtitle": "Desarrollador SemiSenior (React)",
-        "content": "Formé parte de un equipo Front en una plataforma que conecta influencers y marcas. Desarrollo con React, TypeScript, Jest, React Testing Library, SASS, Context API, Bootstrap y consumo de backend en Django (Python). Trabajo remoto entre Argentina y Estados Unidos, usando inglés escrito y oral. ",
+        "content": "Desarrollo de plataforma que conecta influencers y marcas. Stack: React, TypeScript, Context API, Jest, React Testing Library, Sass y consumo de API con Django (Python). Trabajo remoto entre Argentina y Estados Unidos con comunicación en inglés.",
         "title": "Cohley",
         "link": "https://www.cohley.com/",
         "titleDetail": "Nueva York, USA",
@@ -96,7 +96,7 @@
         "date": "2019-07",
         "endDate": "2020-01",
         "subtitle": "Desarrollador SemiSenior (React)",
-        "content": "Participé en el desarrollo de una plataforma de gestión de clientes y soporte técnico para un importante Grupo Telefónico Mexicano. Uso de React, TypeScript, Jest, React Testing Library, Formik, Material UI, Context API y consumo de backend con Microservicios. Metodología SCRUM y tareas gestionadas con JIRA.",
+        "content": "Plataforma de gestión de clientes para telecomunicaciones. Uso de React, TypeScript, Jest, React Testing Library, Formik y Material UI con arquitectura basada en microservicios.",
         "title": "GlobalLogic",
         "link": "https://www.globallogic.com/",
         "titleDetail": "La Plata, Argentina",
@@ -106,7 +106,7 @@
         "date": "2018-07",
         "endDate": "2019-07",
         "subtitle": "Desarrollador Junior (Vue)",
-        "content": "Formé parte del equipo Front encargado del Portal Institucional de la empresa, usando Vue JS, Jest, React Test Library, Material UI y Redux. Trabajo bajo metodología Agile (SCRUM) y equipo distribuido entre Argentina y Estados Unidos, usando inglés escrito y oral para comunicación diaria. Gestión de tareas con JIRA.",
+        "content": "Desarrollo del portal institucional usando Vue.js, JavaScript, HTML, CSS, Jest y Redux. Trabajo en equipo distribuido entre Argentina y Estados Unidos con Scrum.",
         "title": "Accenture",
         "link": "https://www.accenture.com/",
         "titleDetail": "La Plata, Argentina",
@@ -116,7 +116,7 @@
         "date": "2016-06",
         "endDate": "2018-07",
         "subtitle": "Desarrollador Junior (Web UI)",
-        "content": "Comencé con una pasantía de 6 meses y luego obtuve una vacante en sistemas de Vialidad para gestión de carnet de conducir. Desarrollo Front con jQuery, CSS, Ajax y MySQL, y Backend con PHP (Symfony) incluyendo administración de base de datos para consultas y actualizaciones.",
+        "content": "Desarrollo web para sistema gubernamental de gestión de licencias. Uso de jQuery, PHP (Symfony), Ajax y MySQL.",
         "title": "Gobierno Provincial de Buenos Aires",
         "link": "https://www.gba.gob.ar/",
         "titleDetail": "La Plata, Argentina",
@@ -182,67 +182,12 @@
       },
       {
         "title": "Udemy",
-        "titleDetail": "Comunicación Intercultural",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Culture | How to Make Team Decisions",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "EF SET English Certificate 78/100 (C2 Proficient)",
-        "title": "EF SET",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Effective Delegation for New Managers",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "GIT: Advanced commands",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Growth Hacking with Digital Marketing",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Leadership: How to Influence, Inspire and Impact as a Leader",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
         "titleDetail": "Testing React apps with React Testing Library (RTL)",
-        "title": "Udemy",
         "date": "2022-06"
       },
       {
-        "titleDetail": "Time Management Mastery: Do More, Stress Less",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Node: De cero a experto",
-        "title": "Udemy",
-        "date": "2022-04"
-      },
-      {
-        "titleDetail": "Understanding TypeScript",
-        "title": "Udemy",
-        "date": "2022-02"
-      },
-      {
-        "titleDetail": "Diversity, Equity, and Inclusion: A Beginner’s Guide",
-        "title": "Udemy",
-        "date": "2022-06"
-      },
-      {
-        "titleDetail": "Webpack 5: The Complete Guide For Beginners",
-        "title": "Udemy",
+        "title": "EF SET",
+        "titleDetail": "EF SET English Certificate 78/100 (C2 Proficient)",
         "date": "2022-06"
       }
     ]
